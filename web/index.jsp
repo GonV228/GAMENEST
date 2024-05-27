@@ -92,6 +92,12 @@
                                        
                 </li>
                 <li>
+                    <a href='sugerencias.jsp'>
+                        <i class="fa-regular fa-comment"></i>
+                        <span class='nav-item'>Sugerencias</span>
+                    </a>    
+                </li>
+                <li>
                     <a href='libroReclamaciones.jsp'>
                         <i class="fa-solid fa-file-circle-exclamation"></i>
                         <span class='nav-item'>Reportes</span>
