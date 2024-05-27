@@ -3,16 +3,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
-              crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="css/faq.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/faq.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="accordion">
-            <div class="content">
-                <div class="label">¿Como comprar en GameNest?</div>
-                <div class="answer1">
+        <%@ include file="header.jsp" %>
+     <!--   <h1>Preguntas Frecuentes</h1>-->
+          <div class="accordion">
+            <div class="item">
+                <div class="question">¿Como comprar en GameNest?</div>
+                <div class="answer">
                     <p>   1. Seleccione un juego</p>
                     <p>   2. Presione el botón de agregar el carrito</p>
                     <p>   3. Dentro del carrito presione "Proceder al pago"</p>
@@ -20,13 +20,13 @@
                     <p>   5. Su juego estará disponible para su descarga</p>
 
                 </div>    
-                <div class="label">¿Como puedo realizar un reembolso?</div>
+                <div class="question">¿Como puedo realizar un reembolso?</div>
                     <p class="answer"> 
                         Para realizar un reembolso dirijasé al apartado de 'Soporte' y seleccione 'Solicitar reembolso'.
                         Tendrá que rellenar un formulario y pasará a revisión.
                     </p>    
-                <div class="label">¿Cuales son sus métodos de pago?</div>
-                <div class="answer1">
+                <div class="question">¿Cuales son sus métodos de pago?</div>
+                <div class="answer">
                     <p>   Tenemos los siguientes métodos de pago:</p>
                     <p>   1. Yape/Plin</p>
                     <p>   2. Pago Efectivo</p>
@@ -34,37 +34,43 @@
 
                 </div>   
                 
-                <div class="label">¿Cuales son sus métodos de pago?</div>
-                <div class="answer1">
-                    <p>   Tenemos los siguientes métodos de pago:</p>
-                    <p>   1. Yape/Plin</p>
-                    <p>   2. Pago Efectivo</p>
-                    <p>   3. Tarjeta de crédito/débito</p>
-
-                </div>   
+                <div class="question">¿Puedo cancelar o modificar mi pedido?</div>
+                <div class="answer">
+                    <p>Normalmente, los pedidos en nuestra página de venta de videojuegos online no pueden ser cancelados 
+                        ni modificados una vez que se ha canjeado el código del producto. Esto se debe a que una vez 
+                        que el código se ha canjeado, el producto se considera entregado 
+                        y no podemos revertir este proceso. Sin embargo, si aún no has canjeado el código del producto, 
+                        puedes ponerte en contacto con nuestro equipo de atención al cliente para discutir opciones 
+                        de cancelación o modificación.</p>
+                </div> 
+                
+                <div class="question">¿Tienen servicio de atención al cliente?</div>
+                <div class="answer">
+                    <p>Puedes contactarnos a nuestro correo: atencioncliente@gamenest.com</p>
+                </div> 
+                
+                <div class="question">¿Tienen ofertas especiales, descuentos o programas de fidelización?</div>
+                <div class="answer">
+                    <p>Sí, en nuestra página de venta de videojuegos online ofrecemos regularmente ofertas especiales, 
+                        descuentos exclusivos y programas de fidelización para nuestros clientes. Estas promociones 
+                        pueden incluir descuentos por tiempo limitado en juegos populares, ofertas de temporada, 
+                        bundles con contenido adicional y beneficios exclusivos para miembros del programa de fidelización, 
+                        como acceso anticipado a lanzamientos, descuentos adicionales y recompensas por compras frecuentes. </p>
+                </div>                 
             </div>
             
         </div> 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const labels = document.querySelectorAll('.label');
-                labels.forEach(label => {
-                    label.addEventListener('click', function () {
-                        const content = this.parentElement;
-                        const answer = this.nextElementSibling;
-                        //Mostrar la clase activa
-                        content.classList.toggle('active');
-                        //Ocultar respuestas
-                        document.querySelectorAll('.accordion .content').forEach(item => {
-                            if (item !== content) {
-                                item.classList.remove('active');
-                            }
-                        });
+                const questions = document.querySelectorAll('.question');
 
-                        if (content.classList.contains('active')) {
-                            answer.classList.add('active');
+                questions.forEach(function (question) {
+                    question.addEventListener('click', function () {
+                        const answer = this.nextElementSibling;
+                        if (answer.style.display === 'block') {
+                            answer.style.display = 'none';
                         } else {
-                            answer.classList.remove('active');
+                            answer.style.display = 'block';
                         }
                     });
                 });
