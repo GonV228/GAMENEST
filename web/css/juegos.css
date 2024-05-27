@@ -1,0 +1,91 @@
+body{
+    margin: 20px 50px;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(../img/fondoG1.jpg); /* Reemplaza 'background.jpg' con la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;  
+}
+
+h1{
+    color: #fff;
+}
+.listaJuegos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px; /* Espacio entre los elementos */
+}
+
+.juegos{
+    position: relative;
+    width: 210px;
+    padding: 0px 50px;
+    float: left;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+}
+.juegos h4{
+    position: absolute;
+    z-index: 1;
+    font-size: 15px;
+    line-height: 23px;
+    color: #ffffff;
+    background-color: black;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0px;
+}
+
+.juegos h4 small{
+    font-size: 15px;
+    display: block;
+}
+
+.juegos a img{
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.5);
+    transition: .3s ease-in-out;
+}
+
+.juegos a img:hover{
+    opacity: .85;
+}
+
+.name-game{
+    background-color: #0000004D;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 200px;
+    height: 60px;
+}
+
+.name-game a h5 {
+    font-size: 18px;
+    color: #FFFFFF99;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px; 
+    margin: 0;
+}
+
+.name-game a h5:hover{
+    text-decoration: none;
+    color: #A91D3A;
+}
+
+.name-game a{
+    text-decoration: none;
+}
+
+.name-game p{
+    font-size: 10px;
+    color: #FFFFFF99;
+    margin: 0;
+}
+

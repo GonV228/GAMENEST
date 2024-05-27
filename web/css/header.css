@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*CAMBIAR EL COLOR DE TODA LA BARA*/
+:root {
+    --primary-color: #2C2C3E;
+}
+/*COLOR BARRA #393944 */
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.sidebar .top{
+    padding-top: 50px;
+}
+/*CONTENEDOR BARRA LATERAL*/
+.sidebar{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: var(--primary-color); /*COLOR BARRA*/
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    
+}
+/*TAMAÑO BARRA LATERAL DESPLEGADA*/
+.sidebar.active{
+    width: 250px;
+}
+/*BOTON MENU*/
+.sidebar #btn{
+    position: absolute;
+    color: #fff;
+    top: 0.4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+/*BOTON MENU DESPLEGADO*/
+.sidebar.active #btn{
+    left: 90%;
+}
+/*CONTENIDO BARRA*/
+.sidebar ul li{
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin:0.8rem auto;
+    line-height: 50px;
+}
+.sidebar ul li a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+.sidebar ul li a:hover{
+    background: #fff;
+    color: var(--primary-color);
+}
+.sidebar ul li i.close:hover{
+    color: var(--primary-color);
+}
+.sidebar ul li a i{
+    min-width: 50px;
+    text-align:center;
+    height:50px;
+    border-radius: 12px;
+    line-height: 50px;
+}
+.sidebar .nav-item{
+    opacity: 0;
+}
+.sidebar.active .nav-item{
+    opacity: 1;
+}
+.sidebar ul li .tp{
+    position: absolute;
+    left: 125px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0,0,0,0.2);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+}
+.sidebar ul li:hover .tp{
+    opacity: 1;
+}
+.sidebar.active ul li .tp{
+    display: none;
+}
+.sidebar ul li.logout{
+    align-content: center;
+}
+/*AJUSTAR LA IMAGEN DE PERFIL*/
+.sidebar .profile{
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 1.6rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #616198;
+    padding: 10px 0;
+    margin: 0.8rem;
+}
+.sidebar .profile .name-user{
+    /*position: absolute;*/
+    top: 450px;
+    margin-left: 70px;
+    display: none; /*OCULTAR EL NOMBRE DE USUARIO*/
+    color: #fff;
+}
+.sidebar.active .profile .name-user{ /*MOSTRAR EL NOMBRE DE USUARIO AL DESPLEGAR LA BARRA*/
+    display: block;
+}
+.sidebar .profile img{
+    /*AJUSTAR LA IMAGEN DE PERFIL DENTO DEL CONTENEDOR*/
+    height: 55px; /*TAMAÑO DE LA IMAGEN*/
+    width: 55px;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+/*HEADER*/
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    color: #fff;
+}
+
+/*ESTILO BARRA BUSQUEDA*/
+.search-bar {
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem 0 0 0.3rem;
+    width: 100%;
+}
+
+.search-bar button {
+    padding: 0.5rem;
+    background-color: #fff;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 0 0.3rem 0.3rem 0;
+    cursor: pointer;
+}
+
+.search-bar button i {
+    font-size: 1rem;
+}
+
+.container a {
+    margin-left: 1rem;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #fff;
+    border-radius: 0.3rem;
+}
+
+.container a:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+
+
