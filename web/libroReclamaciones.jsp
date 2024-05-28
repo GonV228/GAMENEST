@@ -6,7 +6,7 @@
         <link href="css/libroRec.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="../vista/header.jsp" %>
         <div class="form-container">
             <h1>Formulario de Reclamaciones</h1>
             <form action="ControladorGuardarRec" method="post">

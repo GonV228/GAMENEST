@@ -46,7 +46,7 @@ public class ControladorRegistrarUs extends HttpServlet {
             // Si el registro fue exitoso, mostrar mensaje de éxito y redireccionar al login.jsp
             out.println("<script type=\"text/javascript\">");
             out.println("alert('¡Registro exitoso!');");
-            out.println("window.location.href = 'login.jsp';");
+            out.println("window.location.href = \"vista/login.jsp\";");
             out.println("</script>");
         } else {
             // Si hubo un error en el registro, mostrar mensaje de error
@@ -54,20 +54,20 @@ public class ControladorRegistrarUs extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+@Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    processRequest(request, response); // Llama al método processRequest para manejar la solicitud GET
+}
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    processRequest(request, response); // Llama al método processRequest para manejar la solicitud POST
+}
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
+@Override
+public String getServletInfo() {
+    return "Short description"; // Devuelve una descripción breve del servlet
+}
 }

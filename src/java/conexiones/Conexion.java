@@ -8,9 +8,9 @@ import java.util.logging.Logger;
 
 public class Conexion {
     private Connection con = null;
-    private String url = "jdbc:mysql://localhost:3306/bdcarritocompras?useTimeZone=true&serverTimezone=UTC&autoReconnect=true";
+    private String url = "jdbc:mysql://localhost:33065/bdcarritocompras?useTimeZone=true&serverTimezone=UTC&autoReconnect=true";
     private String user = "root";
-    private String pass = "";
+    private String pass = "12";
     private String driver = "com.mysql.cj.jdbc.Driver";
 
     public Connection getConection() throws SQLException {

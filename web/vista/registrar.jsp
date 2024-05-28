@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="css/registrar.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/registrar.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <main>
     <div class="registration-container">
         <h1>Registro de Usuario</h1>
-        <form action="ControladorRegistrarUs" method="post">
+        <form action="<%=request.getContextPath()%>/ControladorRegistrarUs" method="post">
             <div class="form-group">
                 <input type="text" placeholder="DNI" name="Dni" required>
             </div>
@@ -41,7 +41,7 @@
             </div>
             <button type="submit" class="btn">Registrarse</button>
             <div class="register-link">
-                <p>¿Ya tienes una cuenta? <a href="login.html">Iniciar Sesión</a></p>
+                <p>¿Ya tienes una cuenta? <a href="../vista/login.jsp">Iniciar Sesión</a></p>
             </div>
         </form>
 

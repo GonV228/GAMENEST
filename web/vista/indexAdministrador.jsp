@@ -12,9 +12,9 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="css/header.css" rel="stylesheet" type="text/css"/>
-    <link href="css/login.css" rel="stylesheet" type="text/css"/>
-    <link href="css/carrusel.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/carrusel.css" rel="stylesheet" type="text/css"/>
 
     <header class="main-header">
         <i class="fa-solid fa-dragon"></i>
@@ -32,7 +32,7 @@
             %>
             <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i></a>
                 <% } else { %>
-            <a href="${pageContext.request.contextPath}/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
+            <a href="${pageContext.request.contextPath}/../vista/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
                 <% }%>
         </div>
 
@@ -80,7 +80,7 @@
                 </div>     
                 <ul>
                     <li>
-                        <a href='indexAdministrador.jsp'>
+                        <a href='../vista/indexAdministrador.jsp'>
                             <i class="fa-solid fa-house"></i>
                             <span class='nav-item'>Inicio</span>
                         </a>
@@ -97,16 +97,16 @@
                         <a href='#'>
                             <i class="fa-solid fa-file-circle-exclamation"></i>
                             <span class='nav-item'>Reportes</span>
-                        </a>    
+                        </a>
                     </li>
                     <li>
-                        <a href="FAQ.jsp">
+                      <a href="../vista/FAQ.jsp">
                             <i class="fa-regular fa-circle-question"></i>
                             <span class='nav-item'>Soporte</span>
                         </a>                    
                     </li>
                     <li>
-                        <a href="GestionarJuegos.jsp">
+                        <a href="../vista/GestionarJuegos.jsp">
                             <i class="fa-solid fa-gamepad"></i>
                             <span class='nav-item'>GestionarJuegos</span>
                         </a>
@@ -114,7 +114,7 @@
 
                 </ul>
             </div>         
-            <script><!-- NO CAMBIAR -->
+    <script><!-- NO CAMBIAR -->
                 let btn = document.querySelector('#btn');
                 let sidebar = document.querySelector('.sidebar');
 
@@ -143,7 +143,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/1.jpg" alt="imagen"/>
+                                            <img src="../img/1.jpg" alt="imagen"/>
                                         </picture>
                                     </a>
                                     <div class="name-game">
@@ -162,7 +162,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/2.jpg" alt="imagen"/>
+                                            <img src="../img/2.jpg" alt="imagen"/>
                                         </picture>
                                         <div class="name-game">
                                             <a href="/" title="Inmortals of Aveum Deluxe Edition">
@@ -182,7 +182,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/3.jpg" alt="imagen"/>
+                                            <img src="../img/3.jpg" alt="imagen"/>
                                         </picture>
                                         <div class="name-game">
                                             <a href="/" title="MotorGP 24">
@@ -201,7 +201,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/4.jpg" alt="imagen"/>
+                                            <img src="../img/4.jpg" alt="imagen"/>
                                         </picture>
                                         <div class="name-game">
                                             <a href="/" title="Tekken 8 Ultimate Edition">
@@ -220,7 +220,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/5.jpg" alt="imagen"/>
+                                            <img src="../img/5.jpg" alt="imagen"/>
                                         </picture>
                                         <div class="name-game">
                                             <a href="/" title="Call Of Duty Black Ops Cold War">
@@ -239,7 +239,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/6.jpg" alt="imagen"/>
+                                            <img src="../img/6.jpg" alt="imagen"/>
                                         </picture>
                                         <div class="name-game">
                                             <a href="/" title="Grand theft Auto V">
@@ -258,7 +258,7 @@
                                     <a href="/">
                                         <h4> <small>Estreno</small></h4>
                                         <picture>
-                                            <img src="img/7.jpg" alt="imagen"/>
+                                            <img src="../img/7.jpg" alt="imagen"/>
                                         </picture>
                                         <div class="name-game">
                                             <a href="/" title="Red Dead Redemption 2">

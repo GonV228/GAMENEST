@@ -7,7 +7,7 @@
         <title>Formulario de Sugerencias</title>
     </head>
     <body>
-        <%@ include file="header.jsp" %>
+        <%@ include file="../vista/header.jsp" %>
         <div class="form-container">
             <h1>Formulario de Sugerencias</h1>
             <form action="ControladorSugerencia" method="post">

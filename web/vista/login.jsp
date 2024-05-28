@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/login.css" rel="stylesheet" type="text/css"/>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
     <main class="CC">
         <div class="C1">
-            <form action="ControladorLogin" method="post">
+            <form action="<%=request.getContextPath()%>/ControladorLogin" method="post">
                 <h1>Iniciar sesión</h1>
                 <%-- Mostrar mensaje de error si está presente --%>
                 <c:if test="${not empty mensajeError}">
@@ -34,7 +34,7 @@
                 <button type="submit" class="btn">Iniciar Sesión</button>
                 <div class="C5-registrar">
                     <p>¿No tienes una cuenta? <a href="registrar.jsp">Registrarse</a></p>
-                    <p>Volver al <a href="index.jsp">Inicio</a></p>
+                    <p>Volver al <a href="../index.jsp">Inicio</a></p>
                 </div>
             </form>
         </div>

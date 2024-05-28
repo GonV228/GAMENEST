@@ -10,10 +10,9 @@
               crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="css/header.css" rel="stylesheet" type="text/css"/>
-        <link href="css/login.css" rel="stylesheet" type="text/css"/>
-        <link href="css/carrusel.css" rel="stylesheet" type="text/css"/>
-        <link href="css/gestionarjuegos.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/header.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/carrusel.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/gestionarjuegos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -31,9 +30,9 @@
                     if (usuario != null && usuario.getRol().equals("administrador")) {
                         out.print("Hola " + usuario.getNombres() + ", bienvenido como administrador.");
                 %>
-                <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i></a>
+                <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i>Salir</a>
                     <% } else { %>
-                <a href="${pageContext.request.contextPath}/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
+                <a href="${pageContext.request.contextPath}/vista/login.jsp">Login<i class="fa-solid fa-user usuario"></i></a>
                     <% }%>
             </div>
         </header>
@@ -45,7 +44,7 @@
                 </div>     
                 <ul>
                     <li>
-                        <a href='indexAdministrador.jsp'>
+                        <a href='../vista/indexAdministrador.jsp'>
                             <i class="fa-solid fa-house"></i>
                             <span class='nav-item'>Inicio</span>
                         </a>
@@ -64,13 +63,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="FAQ.jsp">
+                        <a href="../vista/FAQ.jsp">
                             <i class="fa-regular fa-circle-question"></i>
                             <span class='nav-item'>Soporte</span>
                         </a>
                     </li>
                     <li>
-                        <a href="GestionarJuegos.jsp">
+                        <a href="../vista/GestionarJuegos.jsp">
                             <i class="fa-solid fa-gamepad"></i>
                             <span class='nav-item'>GestionarJuegos</span>
                         </a>
