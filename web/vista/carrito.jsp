@@ -28,14 +28,14 @@
                 </tr>
             </thead>
             <tbody >
-                <%------<c:forEach var="juego" items="${juegosCarrito}">
+                <c:forEach var="juego" items="${juegosCarrito}">
                     <tr>
                         <td>${juego.idJuego}</td>
                         <td><img src="${juego.imagenJuego}" alt="${juego.nombreJuego}" /></td>
                         <td>${juego.nombreJuego}</td>
                         <td>${juego.pesoJuego}</td>
                         <td>${juego.precio}</td>
-                    </tr>-----%>
+                    </tr>
                 
                     <tr>
                         
