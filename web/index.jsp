@@ -34,7 +34,27 @@
             <% } else { %>
             <a href="${pageContext.request.contextPath}/vista/login.jsp">Login<i class="fa-solid fa-user usuario"></i></a>
                 <% }%>
+            <a href="vista/carrito.jsp" class="cart-button">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-counter" class="cart-counter">0</span>
+        </a>
         </div>
+        <style>
+  .cart-button {
+    position: relative;
+  }
+  
+  .cart-counter {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+</style>
     <style>
             .carrusel {
                 padding-top: 80px; 
@@ -137,7 +157,25 @@
                             </path>
                             </svg>
                         </button>
+           
+                    <style>
+                    .añadir{
+    position: absolute;
+    top: 10px; /* Ajusta según sea necesario */
+    right: 10px; /* Ajusta según sea necesario */
+    padding: 0.5rem 1rem;
+    background-color: #f1601c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.añadir :hover {
+    background-color: #ad3b06;
+}
+
+</style>
                         <div class="carrusel-track" id="track">
                             <div class="carousel" id="carousel">
                                 <div>
@@ -153,6 +191,7 @@
                                         </a>
                                         <p>Tamaño: 98,9 GB</p>
                                         <p>Categoria: Aventura</p>
+                                         <button class="añadir" data-product-id="1">Añadir</button>
                                     </div>
                                 </div>
                             </div>
@@ -170,6 +209,7 @@
                                                 <h5>Inmortals of Aveum Deluxe Edition</h5>
                                                 <p>Tamaño: 55,3 GB</p>
                                                 <p>Categoría: Acción</p>
+                                                 <button class="añadir" data-product-id="1">Añadir</button>
                                             </a>
                                         </div>
 
@@ -192,6 +232,7 @@
                                             </a>
                                             <p>Tamaño: 13,2 GB</p>
                                             <p>Categoria: Carrera</p>
+                                             <button class="añadir" data-product-id="1">Añadir</button>
                                         </div>
                                     </a>
                                 </div>
@@ -211,6 +252,7 @@
                                             </a>
                                             <p>Tamaño: 76,8 GB</p>
                                             <p>Categoria: Lucha</p>
+                                             <button class="añadir" data-product-id="1">Añadir</button>
                                         </div>
                                     </a>
                                 </div>
@@ -230,6 +272,7 @@
                                             </a>
                                             <p>Tamaño: 80,6 GB</p>
                                             <p>Categoria: Accion</p>
+                                             <button class="añadir" data-product-id="1">Añadir</button>
                                         </div>
                                     </a>
                                 </div>
@@ -249,6 +292,7 @@
                                             </a>
                                             <p>Tamaño: 60,9 GB</p>
                                             <p>Categoria: Accion</p>
+                                             <button class="añadir" data-product-id="1">Añadir</button>
                                         </div>
                                     </a>
                                 </div>
@@ -268,6 +312,7 @@
                                             </a>
                                             <p>Tamaño: 103 GB</p>
                                             <p>Categoria: Aventura</p>
+                                             <button class="añadir" data-product-id="1">Añadir</button>
                                         </div>
                                     </a>
                                 </div>
@@ -297,6 +342,48 @@
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
             <script src="js/carrusel.js" type="text/javascript"></script>
+            <%----<script>
+    let cartCounter = 0;
+
+    // Retrieve saved cart count from local storage
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedCount = localStorage.getItem('cartCounter');
+        if (savedCount) {
+            cartCounter = parseInt(savedCount, 10);
+            document.getElementById('cart-counter').textContent = cartCounter;
+        }
+    });
+
+    const addToCartButtons = document.querySelectorAll('.añadir');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productId = event.target.getAttribute('data-product-id');
+            addProductToCart(productId);
+            updateCartCounter();
+        });
+    });
+
+    function addProductToCart(productId) {
+        // Here you would normally handle adding the product to the cart
+        // This could involve an AJAX request to your server
+        console.log(`Product ${productId} added to cart`);
+    }
+
+    function updateCartCounter() {
+        cartCounter++;
+        document.getElementById('cart-counter').textContent = cartCounter;
+        // Save updated cart count to local storage
+        localStorage.setItem('cartCounter', cartCounter);
+    }
+
+    // Function to reset the cart counter
+    function resetCartCounter() {
+        cartCounter = 0;
+        document.getElementById('cart-counter').textContent = cartCounter;
+        localStorage.removeItem('cartCounter');
+    }
+</script>-----%>
+
         </body>
 
     </html>

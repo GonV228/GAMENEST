@@ -6,10 +6,29 @@ public class juego {
     private String imagenJuego;
     private String categoria;
     private String pesoJuego;
+    private Double precio;
 
-    public juego(){}
+    public juego(){
+    }
 
+    public juego(int idJuego, String nombreJuego, String imagenJuego, String categoria, String pesoJuego, Double precio) {
+        this.idJuego = idJuego;
+        this.nombreJuego = nombreJuego;
+        this.imagenJuego = imagenJuego;
+        this.categoria = categoria;
+        this.pesoJuego = pesoJuego;
+        this.precio = precio;
+    }
     
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
     public int getIdJuego() {
         return idJuego;
     }

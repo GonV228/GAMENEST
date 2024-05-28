@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import conexiones.Conexion;
+import java.util.stream.Collectors;
 
 public class juegoDAO {
     Connection cnx;
@@ -33,4 +34,30 @@ public class juegoDAO {
         }
         return lista;
     }
+        public juego obtenerJuego(int idJuego) throws SQLException {
+        juego j = null;
+        String sql = "SELECT j.idJuego, j.nombreJuego, j.pesoJuego, j.precio, j.imagenJuego "
+                   + "FROM juego j "
+                   + "WHERE j.idJuego = ? ";
+        try (Connection cnx = cn.getConection();
+             PreparedStatement ps = cnx.prepareStatement(sql)) {
+            ps.setInt(1, idJuego);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    j = new juego();
+                    j.setIdJuego(rs.getInt("idJuego"));
+                    j.setNombreJuego(rs.getString("nombreJuego"));
+                    j.setPesoJuego(rs.getString("pesoJuego"));
+                    j.setPrecio(rs.getDouble("precio"));
+                    j.setImagenJuego(rs.getString("imagenJuego"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return j;
+    }
+
+    
 }
