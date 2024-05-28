@@ -3,13 +3,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/libroRec.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/libroRec.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
     <%@ include file="../vista/header.jsp" %>
         <div class="form-container">
             <h1>Formulario de Reclamaciones</h1>
-            <form action="ControladorGuardarRec" method="post">
+            <form action="<%=request.getContextPath()%>/ControladorGuardarRec" method="post">
                 <!------------------ Campos del formulario ------------------>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>

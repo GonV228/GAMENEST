@@ -25,8 +25,7 @@
     width: 80px;
     background-color: var(--primary-color); /*COLOR BARRA*/
     padding: 0.4rem 0.8rem;
-    transition: all 0.5s ease;
-    
+    transition: all 0.5s ease;  
 }
 /*TAMAÑO BARRA LATERAL DESPLEGADA*/
 .sidebar.active{
@@ -34,6 +33,7 @@
 }
 /*BOTON MENU*/
 .sidebar #btn{
+   /* padding-top: 70px;*/
     position: absolute;
     color: #fff;
     top: 0.4rem;
@@ -45,10 +45,11 @@
 }
 /*BOTON MENU DESPLEGADO*/
 .sidebar.active #btn{
-    left: 90%;
+    left: 50px;
 }
 /*CONTENIDO BARRA*/
 .sidebar ul li{
+    /*padding-top: 50px;*/
     position: relative;
     list-style-type: none;
     height: 50px;
@@ -104,36 +105,6 @@
 .sidebar ul li.logout{
     align-content: center;
 }
-/*AJUSTAR LA IMAGEN DE PERFIL*/
-.sidebar .profile{
-    position: absolute;
-    bottom: 0;
-    width: calc(100% - 1.6rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #616198;
-    padding: 10px 0;
-    margin: 0.8rem;
-}
-.sidebar .profile .name-user{
-    /*position: absolute;*/
-    top: 450px;
-    margin-left: 70px;
-    display: none; /*OCULTAR EL NOMBRE DE USUARIO*/
-    color: #fff;
-}
-.sidebar.active .profile .name-user{ /*MOSTRAR EL NOMBRE DE USUARIO AL DESPLEGAR LA BARRA*/
-    display: block;
-}
-.sidebar .profile img{
-    /*AJUSTAR LA IMAGEN DE PERFIL DENTO DEL CONTENEDOR*/
-    height: 55px; /*TAMAÑO DE LA IMAGEN*/
-    width: 55px;
-    border-radius: 16px;
-    object-fit: cover;
-    margin-right: 10px;
-}
 /*HEADER*/
 .main-header {
     display: flex;
@@ -142,6 +113,11 @@
     background-color: var(--primary-color);
     padding: 1rem 2rem;
     color: #fff;
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 /*ESTILO BARRA BUSQUEDA*/
@@ -185,6 +161,8 @@
     background-color: #fff;
     color: var(--primary-color);
 }
-
+.main-header .icon-white{
+    color: #fff;
+}
 
 

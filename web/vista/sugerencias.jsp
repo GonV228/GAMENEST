@@ -3,14 +3,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/formsugerencias.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/formsugerencias.css" rel="stylesheet" type="text/css"/>
         <title>Formulario de Sugerencias</title>
+        <style>
+            body {
+                padding-top: 50px; 
+            }
+        </style>
     </head>
     <body>
         <%@ include file="../vista/header.jsp" %>
         <div class="form-container">
             <h1>Formulario de Sugerencias</h1>
-            <form action="ControladorSugerencia" method="post">
+            <form action="<%=request.getContextPath()%>/ControladorSugerencia" method="post">
                 <!------------------ Campos del Usuario ------------------>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>

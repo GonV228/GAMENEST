@@ -35,7 +35,11 @@
             <a href="${pageContext.request.contextPath}/vista/login.jsp">Login<i class="fa-solid fa-user usuario"></i></a>
                 <% }%>
         </div>
-
+    <style>
+            .carrusel {
+                padding-top: 80px; 
+            }
+    </style>
 
 
 
@@ -92,13 +96,13 @@
 
                     </li>
                     <li>
-                        <a href='sugerencias.jsp'>
+                        <a href='vista/sugerencias.jsp'>
                             <i class="fa-regular fa-comment"></i>
                             <span class='nav-item'>Sugerencias</span>
                         </a>    
                     </li>
                     <li>
-                        <a href='libroReclamaciones.jsp'>
+                        <a href='vista/libroReclamaciones.jsp'>
                             <i class="fa-solid fa-file-circle-exclamation"></i>
                             <span class='nav-item'>Reportes</span>
                         </a>    
