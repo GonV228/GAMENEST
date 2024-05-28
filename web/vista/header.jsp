@@ -14,7 +14,7 @@
     </head>    
         <!---------------------------------------- BARRA SUPERIOR ---------------------------------------->    
         <header class="main-header">
-            <a href="">
+            <a href="../index.jsp">
                <i class="fa-solid fa-dragon icon-white"></i>
             </a>
             <div class="search-bar">
