@@ -1,4 +1,5 @@
 
+<%@page import="modelo.dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
    <head>
@@ -22,11 +23,19 @@
                     <i class="fa-solid fa-search"></i>
                 </button>
             </div>
-            <div class="container">
-                <a href="" class="cart"><i class="fa-solid fa-cart-shopping"></i>
-                <a href="login.jsp" class="login">Iniciar Sesión</a>
-            </div>
-        </header>
+    <div class="container">
+        <% 
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            if (usuario != null && usuario.getRol().equals("cliente")) {
+                out.print("Hola " + usuario.getNombres() + ", bienvenido como cliente.");
+        %>
+        <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i></a>
+        <% } else { %>
+        <a href="${pageContext.request.contextPath}/vista/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
+        <% } %>
+    </div>
+
+    </header>
        <!--------------------------------------------------------------------------------------------------> 
 
 </html>
