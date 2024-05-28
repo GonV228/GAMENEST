@@ -10,9 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.dao.registrarDAO;
 import modelo.dto.Usuario;
 
+/**
+ * Servlet controlador para manejar el registro de nuevos usuarios.
+ */
 @WebServlet(name = "ControladorRegistrarUs", urlPatterns = {"/ControladorRegistrarUs"})
 public class ControladorRegistrarUs extends HttpServlet {
 
+    /**
+     * Procesa las solicitudes tanto GET como POST.
+     * 
+     * @param request El objeto HttpServletRequest que contiene la solicitud del cliente.
+     * @param response El objeto HttpServletResponse que contiene la respuesta del servlet.
+     * @throws ServletException Si ocurre un error específico del servlet.
+     * @throws IOException Si ocurre un error de E/S.
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,7 +43,7 @@ public class ControladorRegistrarUs extends HttpServlet {
             return;
         }
 
-        // Crear un objeto cliente con la información del formulario
+        // Crear un objeto Usuario con la información del formulario
         Usuario nuevoCliente = new Usuario(0, dni, nombres, direccion, email, contraseña, rol);
 
         // Crear una instancia del DAO para el registro de usuarios
@@ -54,20 +65,41 @@ public class ControladorRegistrarUs extends HttpServlet {
         }
     }
 
-@Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    processRequest(request, response); // Llama al método processRequest para manejar la solicitud GET
-}
+    /**
+     * Maneja las solicitudes GET.
+     * 
+     * @param request El objeto HttpServletRequest que contiene la solicitud del cliente.
+     * @param response El objeto HttpServletResponse que contiene la respuesta del servlet.
+     * @throws ServletException Si ocurre un error específico del servlet.
+     * @throws IOException Si ocurre un error de E/S.
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response); // Llama al método processRequest para manejar la solicitud GET
+    }
 
-@Override
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    processRequest(request, response); // Llama al método processRequest para manejar la solicitud POST
-}
+    /**
+     * Maneja las solicitudes POST.
+     * 
+     * @param request El objeto HttpServletRequest que contiene la solicitud del cliente.
+     * @param response El objeto HttpServletResponse que contiene la respuesta del servlet.
+     * @throws ServletException Si ocurre un error específico del servlet.
+     * @throws IOException Si ocurre un error de E/S.
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response); // Llama al método processRequest para manejar la solicitud POST
+    }
 
-@Override
-public String getServletInfo() {
-    return "Short description"; // Devuelve una descripción breve del servlet
-}
+    /**
+     * Devuelve una breve descripción del servlet.
+     * 
+     * @return Una cadena que describe brevemente el servlet.
+     */
+    @Override
+    public String getServletInfo() {
+        return "Controlador para registrar nuevos usuarios";
+    }
 }
