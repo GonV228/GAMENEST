@@ -1,6 +1,5 @@
 <%@page import="modelo.dto.Usuario"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -40,20 +39,7 @@
         </a>
         </div>
         <style>
-  .cart-button {
-    position: relative;
-  }
   
-  .cart-counter {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-  }
 </style>
     <style>
             .carrusel {

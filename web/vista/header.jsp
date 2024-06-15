@@ -1,4 +1,3 @@
-
 <%@page import="modelo.dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>

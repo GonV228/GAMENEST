@@ -1,5 +1,6 @@
 body{
     margin: 20px 50px;
+    margin-top: 80px;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(../img/fondoG1.jpg); /* Reemplaza 'background.jpg' con la ruta de tu imagen de fondo */
@@ -11,6 +12,7 @@ h1{
     color: #fff;
 }
 .listaJuegos {
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     gap: 18px; /* Espacio entre los elementos */
