@@ -7,12 +7,10 @@ public class juego {
     private String categoria;
     private String pesoJuego;
     private Double precio;
+    private detalleJuego detalleJuego;
 
     public juego(){
     }
-
-  
-    
 
     public double getPrecio() {
         return precio;
@@ -63,6 +61,15 @@ public class juego {
     public void setPesoJuego(String pesoJuego) {
         this.pesoJuego = pesoJuego;
     }
+
+    public detalleJuego getDetalleJuego() {
+        return detalleJuego;
+    }
+
+    public void setDetalleJuego(detalleJuego detalleJuego) {
+        this.detalleJuego = detalleJuego;
+    }
+    
     
     
     

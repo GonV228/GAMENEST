@@ -16,6 +16,10 @@
         <servlet-name>ControladorJuego</servlet-name>
         <servlet-class>Controlador.ControladorJuego</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorDetalleJuegos</servlet-name>
+        <servlet-class>Controlador.ControladorDetalleJuegos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ControladorJuego</servlet-name>
         <url-pattern>/ControladorJuego</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorDetalleJuegos</servlet-name>
+        <url-pattern>/ControladorDetalleJuegos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

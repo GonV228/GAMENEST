@@ -22,7 +22,12 @@ public class ControladorJuego extends HttpServlet {
         String accion = request.getParameter("accion");
         lista = juegodao.listar();
         if (accion != null) {
-
+            if(accion.equals("detalle")){
+                int idJuego = Integer.parseInt(request.getParameter("idJuego"));
+                juego j = juegodao.obtenerJuego(idJuego);
+                request.setAttribute("juego", j);
+                request.getRequestDispatcher("./vista/detallesJuego.jsp").forward(request, response);
+            }
         } else {
             request.setAttribute("lista", lista);
             request.getRequestDispatcher("./vista/juegos.jsp").forward(request, response);

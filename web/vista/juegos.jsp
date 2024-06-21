@@ -62,7 +62,7 @@
                                 </picture>
                             </a>
                             <div class="name-game">
-                                <a href="#" title="${j.nombreJuego}">
+                                <a href="${pageContext.request.contextPath}/ControladorJuego?accion=detalle&idJuego=${j.idJuego}" title="${j.nombreJuego}">
                                     <h5>${j.nombreJuego}</h5>
                                 </a>
                                 <p>Peso: ${j.pesoJuego}</p>
