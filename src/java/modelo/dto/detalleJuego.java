@@ -9,6 +9,7 @@ public class detalleJuego {
     private String plataforma;
     private String idiomaTexto;
     private String idiomaAudio;
+    private String urlVideo;
 
     public int getDetalleJuegoId() {
         return detalleJuegoId;
@@ -56,6 +57,14 @@ public class detalleJuego {
 
     public void setIdiomaAudio(String idiomaAudio) {
         this.idiomaAudio = idiomaAudio;
+    }
+
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    public void setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
     }
     
     

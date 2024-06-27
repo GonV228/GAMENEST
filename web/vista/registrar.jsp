@@ -35,10 +35,7 @@
                 <input type="password" placeholder="Confirmar Contraseña" name="ConfirmarPassword" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
-            <div class="remember-me">
-                <label><input type="checkbox">Recuérdame</label>
-                <a href="#">¿Olvidaste tu contraseña?</a>
-            </div>
+            
             <button type="submit" class="btn">Registrarse</button>
             <div class="register-link">
                 <p>¿Ya tienes una cuenta? <a href="../vista/login.jsp">Iniciar Sesión</a></p>

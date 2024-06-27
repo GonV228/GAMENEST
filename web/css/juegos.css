@@ -115,3 +115,18 @@ h1 {
     color: #FFFFFF99;
     margin: 0;
 }
+
+.btn-añadir {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s ease;
+}
+
+/* Cambiar color del botón cuando el mouse se posicione sobre él */
+.btn-añadir:hover {
+    background-color: #218838; /* Verde más oscuro */
+}

@@ -56,7 +56,7 @@
                 <c:forEach var="j" items="${lista}">
                     <div class="juegos">
                         <div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/ControladorJuego?accion=detalle&idJuego=${j.idJuego}">
                                 <picture>
                                     <img src="juegos/${j.imagenJuego}" alt="${j.nombreJuego}"/>
                                 </picture>

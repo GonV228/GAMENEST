@@ -177,7 +177,7 @@
                                         </a>
                                         <p>Tamaño: 98,9 GB</p>
                                         <p>Categoria: Aventura</p>
-                                         <button class="añadir" data-product-id="1">Añadir</button>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
                                                 <h5>Inmortals of Aveum Deluxe Edition</h5>
                                                 <p>Tamaño: 55,3 GB</p>
                                                 <p>Categoría: Acción</p>
-                                                 <button class="añadir" data-product-id="1">Añadir</button>
+                                                
                                             </a>
                                         </div>
 
@@ -218,7 +218,7 @@
                                             </a>
                                             <p>Tamaño: 13,2 GB</p>
                                             <p>Categoria: Carrera</p>
-                                             <button class="añadir" data-product-id="1">Añadir</button>
+                                           
                                         </div>
                                     </a>
                                 </div>
@@ -238,7 +238,7 @@
                                             </a>
                                             <p>Tamaño: 76,8 GB</p>
                                             <p>Categoria: Lucha</p>
-                                             <button class="añadir" data-product-id="1">Añadir</button>
+                                           
                                         </div>
                                     </a>
                                 </div>
@@ -258,7 +258,7 @@
                                             </a>
                                             <p>Tamaño: 80,6 GB</p>
                                             <p>Categoria: Accion</p>
-                                             <button class="añadir" data-product-id="1">Añadir</button>
+                                   
                                         </div>
                                     </a>
                                 </div>
@@ -278,7 +278,7 @@
                                             </a>
                                             <p>Tamaño: 60,9 GB</p>
                                             <p>Categoria: Accion</p>
-                                             <button class="añadir" data-product-id="1">Añadir</button>
+                                     
                                         </div>
                                     </a>
                                 </div>
@@ -298,7 +298,7 @@
                                             </a>
                                             <p>Tamaño: 103 GB</p>
                                             <p>Categoria: Aventura</p>
-                                             <button class="añadir" data-product-id="1">Añadir</button>
+                                      
                                         </div>
                                     </a>
                                 </div>

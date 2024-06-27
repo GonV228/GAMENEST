@@ -41,7 +41,7 @@ public class juegoDAO {
 
     public juego obtenerJuego(int idJuego) {
         juego j = null;
-        String sql = "SELECT  j.idJuego, j.nombreJuego, j.imagenJuego, j.pesoJuego, j.categoria, j.precio, d.descripcionJuego, d.fechaEsterno, d.plataforma, d.idiomaTexto, d.idiomaAudio "
+        String sql = "SELECT  j.idJuego, j.nombreJuego, j.imagenJuego, j.pesoJuego, j.categoria, j.precio, d.descripcionJuego, d.fechaEsterno, d.plataforma, d.idiomaTexto, d.idiomaAudio, d.urlVideo "
                 + "FROM juego j "
                 + "INNER JOIN detalleJuego d on j.detalleJuegoId = d.detalleJuegoId "
                 + "WHERE j.idJuego = ?";
@@ -62,6 +62,7 @@ public class juegoDAO {
                     detalle.setPlataforma(rs.getString("plataforma"));
                     detalle.setIdiomaTexto(rs.getString("idiomaTexto"));
                     detalle.setIdiomaAudio(rs.getString("idiomaAudio"));
+                    detalle.setUrlVideo(rs.getString("urlVideo"));
                     j.setDetalleJuego(detalle);
                 }
             }
