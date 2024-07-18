@@ -25,6 +25,8 @@ public class reclamaciones {
         this.evidencia = evidencia;
         this.estado = "P";
     }
+    
+    public reclamaciones(){}
 
     // Getters y Setters
     public int getId() {

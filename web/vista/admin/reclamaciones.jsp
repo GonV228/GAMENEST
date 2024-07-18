@@ -1,4 +1,6 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,17 +27,19 @@
                 </thead>
 
                 <tbody>
+                    <c:forEach var="r" items="${lista}">
                     <tr>
-                        <td>1</td>
-                        <td>Sebas</td>
-                        <td>Misa</td>
-                        <td>@exa</td>
-                        <td>978400</td>
-                        <td>Juego</td>
-                        <td>450</td>
-                        <td>XD</td>
-                        <td>45.jpg</td>
+                        <td>${r.id}</td>
+                        <td>${r.nombre}</td>
+                        <td>${r.apellidos}</td>
+                        <td>${r.correo}</td>
+                        <td>${r.telefono}</td>
+                        <td>${r.producto}</td>
+                        <td>${r.monto_reclamado}</td>
+                        <td>${r.descripcion_problema}</td>
+                        <td>${r.evidencia}</td>
                     </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

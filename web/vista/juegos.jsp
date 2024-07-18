@@ -53,6 +53,7 @@
         </div>
         <div class="content-wrapper">
             <div class="listaJuegos">
+                
                 <c:forEach var="j" items="${lista}">
                     <div class="juegos">
                         <div>
@@ -71,6 +72,7 @@
                         </div>
                     </div>
                 </c:forEach>
+                
             </div>
         </div>
     </div>

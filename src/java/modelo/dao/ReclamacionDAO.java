@@ -5,9 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import modelo.dto.reclamaciones;
 import conexiones.Conexion;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReclamacionDAO {
     private final Conexion conexion;
+    Connection cnx;
+    PreparedStatement ps;
+    ResultSet rs;
     
     public ReclamacionDAO() {
         this.conexion = new Conexion();
@@ -31,5 +37,30 @@ public class ReclamacionDAO {
             ex.printStackTrace();
         }
         return registrado;
+    }
+        
+        public List listar() {
+        List<reclamaciones> lista = new ArrayList<>();
+        String SQL = "SELECT id, nombre, apellidos, correo, telefono, producto, monto_reclamado, descripcion_problema, evidencia FROM reclamaciones ";
+        try {
+            cnx = conexion.getConection();
+            ps = cnx.prepareStatement(SQL);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                reclamaciones r = new reclamaciones();
+                r.setId(rs.getInt(1));
+                r.setNombre(rs.getString(2));
+                r.setApellidos(rs.getString(3));
+                r.setCorreo(rs.getString(4));
+                r.setTelefono(rs.getString(5));
+                r.setProducto(rs.getString(6));
+                r.setMonto_reclamado(rs.getDouble(7));
+                r.setDescripcion_problema(rs.getString(8));
+                r.setEvidencia(rs.getString(9));
+                lista.add(r);
+            }
+        } catch (SQLException e) {
+        }
+        return lista;
     }
 }

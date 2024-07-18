@@ -32,7 +32,7 @@
             %>
             <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i></a>
                 <% } else { %>
-            <a href="${pageContext.request.contextPath}/../vista/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
+            <a href="${pageContext.request.contextPath}/vista/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
                 <% }%>
         </div>
 
@@ -94,7 +94,7 @@
 
                     </li>
                     <li>
-                        <a href="<%=request.getContextPath()%>/vista/admin/reclamaciones.jsp">
+                        <a href="<%=request.getContextPath()%>/ControladorDataTable">
                             <i class="fa-solid fa-file-circle-exclamation"></i>
                             <span class='nav-item'>Reportes</span>
                         </a>
