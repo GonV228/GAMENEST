@@ -41,7 +41,7 @@ public class ReclamacionDAO {
         
         public List listar() {
         List<reclamaciones> lista = new ArrayList<>();
-        String SQL = "SELECT id, nombre, apellidos, correo, telefono, producto, monto_reclamado, descripcion_problema, evidencia FROM reclamaciones ";
+        String SQL = "SELECT id, nombre, apellidos, correo, telefono, producto, monto_reclamado, descripcion_problema, evidencia FROM reclamaciones where estado = 'P' ";
         try {
             cnx = conexion.getConection();
             ps = cnx.prepareStatement(SQL);
