@@ -6,14 +6,27 @@
         <link href="../css/libroRec.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-    <%@ include file="../vista/header.jsp" %>
+        <%@ include file="../vista/header.jsp" %>
+
+        <%
+            // Obtener el usuario de la sesión
+            String nombre = "";
+            String correo = "";
+            boolean usuarioAutenticado = false;
+            if (usuario != null) {
+                nombre = usuario.getNombres();
+                correo = usuario.getEmail();
+                usuarioAutenticado = true;
+            }
+        %>
+
         <div class="form-container">
             <h1>Formulario de Reclamaciones</h1>
             <form action="<%=request.getContextPath()%>/ControladorGuardarRec" method="post">
                 <!------------------ Campos del formulario ------------------>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="text" id="nombre" name="nombre" value="<%=nombre%>" <% if (usuarioAutenticado) { %>readonly<% }%> required>
                 </div>
                 <div class="form-group">
                     <label for="apellidos">Apellidos</label>
@@ -21,15 +34,11 @@
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo</label>
-                    <input type="email" id="correo" name="correo" required>
+                    <input type="email" id="correo" name="correo" value="<%=correo%>" <% if (usuarioAutenticado) { %>readonly<% }%> required>
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono</label>
                     <input type="tel" id="telefono" name="telefono" required>
-                </div>
-                <div class="form-group">
-                    <label for="id_usuario">ID de usuario</label>
-                    <input type="text" id="id_usuario" name="id_usuario" required>
                 </div>
                 <div class="form-group">
                     <label for="producto">Producto</label>

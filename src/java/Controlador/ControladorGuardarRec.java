@@ -15,6 +15,7 @@ public class ControladorGuardarRec extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -23,7 +24,6 @@ public class ControladorGuardarRec extends HttpServlet {
         String apellidos = request.getParameter("apellidos");
         String correo = request.getParameter("correo");
         String telefono = request.getParameter("telefono");
-        String id_usuario = request.getParameter("id_usuario");
         String producto = request.getParameter("producto");
         double monto_reclamado = Double.parseDouble(request.getParameter("monto_reclamado"));
         String descripcion_problema = request.getParameter("descripcion_problema");
@@ -31,13 +31,14 @@ public class ControladorGuardarRec extends HttpServlet {
 
         // Validar datos del formulario
         if (nombre.isEmpty() || apellidos.isEmpty() || correo.isEmpty() || telefono.isEmpty() ||
-            id_usuario.isEmpty() || producto.isEmpty() || descripcion_problema.isEmpty()) {
+            producto.isEmpty() || descripcion_problema.isEmpty()) {
             out.println("<div class='error'>Por favor, complete todos los campos</div>");
             return;
         }
+        
 
         // Crear un objeto Reclamaciones con la información del formulario
-        reclamaciones nuevaReclamacion = new reclamaciones(0, nombre, apellidos, correo, telefono, id_usuario, producto, monto_reclamado, descripcion_problema, evidencia);
+        reclamaciones nuevaReclamacion = new reclamaciones(0, nombre, apellidos, correo, telefono, producto, monto_reclamado, descripcion_problema, evidencia);
 
         // Crear una instancia del DAO para el registro de reclamaciones
         ReclamacionDAO dao = new ReclamacionDAO();

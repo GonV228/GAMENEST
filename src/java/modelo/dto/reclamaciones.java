@@ -6,24 +6,24 @@ public class reclamaciones {
     private String apellidos;
     private String correo;
     private String telefono;
-    private String id_usuario;
     private String producto;
     private double monto_reclamado;
     private String descripcion_problema;
     private String evidencia;
+    private String estado;
 
     // Constructor
-    public reclamaciones(int id, String nombre, String apellidos, String correo, String telefono, String id_usuario, String producto, double monto_reclamado, String descripcion_problema, String evidencia) {
+    public reclamaciones(int id, String nombre, String apellidos, String correo, String telefono, String producto, double monto_reclamado, String descripcion_problema, String evidencia) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.telefono = telefono;
-        this.id_usuario = id_usuario;
         this.producto = producto;
         this.monto_reclamado = monto_reclamado;
         this.descripcion_problema = descripcion_problema;
         this.evidencia = evidencia;
+        this.estado = "P";
     }
 
     // Getters y Setters
@@ -62,13 +62,6 @@ public class reclamaciones {
         this.telefono = telefono;
     }
     
-    public String getId_usuario() {
-        return id_usuario;
-    }
-    public void setId_usuario(String id_usuario) {
-        this.id_usuario = id_usuario;
-    }
-    
     public String getProducto() {
         return producto;
     }
@@ -96,4 +89,14 @@ public class reclamaciones {
     public void setEvidencia(String evidencia) {
         this.evidencia = evidencia;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 }
