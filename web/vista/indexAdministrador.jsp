@@ -94,7 +94,7 @@
 
                     </li>
                     <li>
-                        <a href='#'>
+                        <a href="<%=request.getContextPath()%>/vista/admin/reclamaciones.jsp">
                             <i class="fa-solid fa-file-circle-exclamation"></i>
                             <span class='nav-item'>Reportes</span>
                         </a>
