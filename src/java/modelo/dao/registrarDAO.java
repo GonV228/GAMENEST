@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import modelo.dto.Usuario;
 import conexiones.Conexion;
+import java.sql.ResultSet;
 
 public class registrarDAO {
     private final Conexion conexion;
@@ -33,5 +34,41 @@ public class registrarDAO {
             ex.printStackTrace(); // Impresión del error
         }
         return registrado; // Se devuelve el estado de registro
+    }
+    
+    public boolean existeUsuarioPorCorreo(String correoElectronico) throws SQLException {
+        boolean existeCorreo = false;
+        String query = "SELECT COUNT(*) FROM usuario WHERE Email = ?";
+        try (Connection con = conexion.getConection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, correoElectronico);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    existeCorreo = rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al verificar la existencia del usuario: " + e.getMessage());
+            throw e;
+        }
+        return existeCorreo;
+    }
+    
+    public boolean existeUsuarioPorDni(String nroDni) throws SQLException {
+        boolean existeDni = false;
+        String query = "SELECT COUNT(*) FROM usuario WHERE Dni = ?";
+        try (Connection con = conexion.getConection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, nroDni);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    existeDni = rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al verificar la existencia del usuario: " + e.getMessage());
+            throw e;
+        }
+        return existeDni;
     }
 }

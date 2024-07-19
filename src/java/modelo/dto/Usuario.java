@@ -8,7 +8,7 @@ public class Usuario {
     private String email;
     private String contraseña;
     private String rol;
-
+    
     // Constructor
     public Usuario(int id, String dni, String nombres, String direccion, String email, String contraseña, String rol) {
         this.id = id;

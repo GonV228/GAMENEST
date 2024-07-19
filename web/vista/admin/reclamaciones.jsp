@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -7,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css"/>
+        <link href="${pageContext.request.contextPath}/css/tableReclamaciones.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Reclamaciones</title>
     </head>
@@ -41,8 +41,8 @@
                         <td>${r.descripcion_problema}</td>
                         <td>${r.evidencia}</td>
                         <td>
-                            <button><i class="fa-regular fa-circle-check"></i></button>
-                            <button><i class="fa-solid fa-trash"></i></button>
+                            <button class="btn success"><i class="fas fa-check-circle"></i></button>
+                            <button class="btn danger"><i class="fas fa-times-circle"></i></button>
                         </td>
                         
                     </tr>
