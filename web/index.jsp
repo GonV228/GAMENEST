@@ -1,4 +1,5 @@
 <%@page import="modelo.dto.Usuario"%>
+<%@ include file="/vista/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -15,41 +16,12 @@
     <link href="css/login.css" rel="stylesheet" type="text/css"/>
     <link href="css/carrusel.css" rel="stylesheet" type="text/css"/>
 
-    <header class="main-header">
-        <i class="fa-solid fa-dragon"></i>
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar...">
-            <button type="button">
-                <i class="fa-solid fa-search"></i>
-            </button>
-        </div>
-        <div class="container">
-            <%
-                Usuario usuario = (Usuario) session.getAttribute("usuario");
-                if (usuario != null && usuario.getRol().equals("cliente")) {
-                    out.print("Hola " + usuario.getNombres() + ", bienvenido como cliente.");
-            %>
-            <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i>SALIR</a>
-            <% } else { %>
-            <a href="${pageContext.request.contextPath}/vista/login.jsp">Login<i class="fa-solid fa-user usuario"></i></a>
-                <% }%>
-            <a href="vista/carrito.jsp" class="cart-button">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cart-counter" class="cart-counter">0</span>
-        </a>
-        </div>
-        <style>
-  
-</style>
-    <style>
+    
+            <style>
             .carrusel {
                 padding-top: 80px; 
             }
     </style>
-
-
-
-    </header>
     <body>
         <!--
         <div class="container mt-2">

@@ -71,5 +71,39 @@ public class juegoDAO {
         }
         return j;
     }
+    public List<juego> getJuegosByCategory(String categoria) {
+        List<juego> lista = new ArrayList<>();
+        String SQL = "SELECT idJuego, imagenJuego, nombreJuego, pesoJuego, categoria FROM juego WHERE categoria = ? ORDER BY nombreJuego ASC";
+        try (Connection cnx = cn.getConection();
+             PreparedStatement ps = cnx.prepareStatement(SQL)) {
+            ps.setString(1, categoria);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    juego j = new juego();
+                    j.setIdJuego(rs.getInt(1));
+                    j.setImagenJuego(rs.getString(2));
+                    j.setNombreJuego(rs.getString(3));
+                    j.setPesoJuego(rs.getString(4));
+                    j.setCategoria(rs.getString(5));
+                    lista.add(j);
+                }
+            }
+        } catch (SQLException e) {
+            // Log the exception or handle it appropriately
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
+    // Método para obtener la conexión a la base de datos
+    private Connection getConnection() {
+        // Implementa la lógica para obtener una conexión a tu base de datos
+        // Esto puede variar dependiendo de cómo hayas configurado tu conexión
+        // Por ejemplo, podrías usar un DataSource o DriverManager
+        return null;
+        // Implementa la lógica para obtener una conexión a tu base de datos
+        // Esto puede variar dependiendo de cómo hayas configurado tu conexión
+        // Por ejemplo, podrías usar un DataSource o DriverManager
+    }
 
 }
