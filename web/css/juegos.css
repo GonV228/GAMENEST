@@ -16,20 +16,47 @@ h1 {
     height: 100vh;
 }
 
-.sidebar {
-    width: 250px;
-    background-color: var(--primary-color);
-    height: 100vh;
-    padding-top: 50px;
-    transition: width 0.5s ease;
+.filter-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
 }
 
-.sidebar.active {
-    width: 80px;
+.filter-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.filter-select {
+    font-size: 12px;
+    padding: 8px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    width: 100%;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.filter-select:hover {
+    border-color: #777;
 }
 
 .content-wrapper {
     margin-top: 70px;
+    margin-left: 20px;
     flex-grow: 1;
     overflow-y: auto;
     padding: 20px;
@@ -39,7 +66,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
-    margin-left: 20px;
+/*    margin-left: 20px;*/
 }
 
 .juegos {

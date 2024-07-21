@@ -1,5 +1,6 @@
 <%@page import="modelo.dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
@@ -14,6 +15,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>    
+    <body>
     <!---------------------------------------- BARRA SUPERIOR ---------------------------------------->    
     <header class="main-header">
         <a href="../index.jsp">
@@ -25,29 +27,28 @@
                 <i class="fa-solid fa-search"></i>
             </button>
         </div>
-        <div class="container">
+        <div class="dropdown">
+            <button class="btn rounded-pill btn-cart-icon float-end text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cuenta-carrito">0</span>
+            </button>
+            <ul id="cart-items" class="p-4 dropdown-menu" style="width: 500px">
+                <h2 class="text-center">Carrito de compras</h2>
+                <hr>
+                <h5 class="text-center">No hay productos</h5>
+            </ul>
+        </div>
+        <div class="user-info-container">
             <%
                 Usuario usuario = (Usuario) session.getAttribute("usuario");
                 if (usuario != null && usuario.getRol().equals("cliente")) {
-                    out.print("Hola " + usuario.getNombres() + ", bienvenido como cliente.");
+                    out.print("<span class='user-greeting'>Hola, " + usuario.getNombres() + "</span>");
             %>
             <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i></a>
                 <% } else { %>
             <a href="${pageContext.request.contextPath}/vista/login.jsp"><i class="fa-solid fa-user usuario"></i></a>
                 <% }%>
-            <div class="dropdown">
-                <button class="btn rounded-pill btn-cart-icon float-end text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cuenta-carrito">0</span>
-                </button>
-                <ul id="cart-items" class="p-4 dropdown-menu" style="width: 500px">
-                    <h2 class="text-center">Carrito de compras</h2>
-                    <hr>
-                    <h5 class="text-center">No hay productos</h5>
-                </ul>
-            </div>
         </div>
-
     </header>
     <!--------------------------------------------------------------------------------------------------> 
     <script>
@@ -60,7 +61,7 @@
         // Función para agregar al carrito
         function addCarrito(productId, producto, precio) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const index = cart.findIndex(p => p.id === productId); // Encuentra el ï¿½ndice del producto existente
+            const index = cart.findIndex(p => p.id === productId); // Encuentra el índice del producto existente
             if (index !== -1) {
                 // Si el producto existe, incrementa su cantidad
                 cart[index].quantity += 1;
@@ -124,5 +125,5 @@
             showCart(); // Actualizar la visualización del carrito
         }
     </script>
-
+    </body>
 </html>

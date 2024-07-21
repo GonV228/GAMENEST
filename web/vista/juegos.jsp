@@ -13,74 +13,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="css/header.css" rel="stylesheet" type="text/css"/>
     <link href="css/login.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/barraLateral.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
    
     <div class="main-content">
         <div class="sidebar">
-            <div class="top">
-                <i class="fa-solid fa-bars" id="btn"></i>
-            </div>
             <ul>
-                <li><a href="index.jsp"><i class="fa-solid fa-house"></i><span class="nav-item">Inicio</span></a></li>
-                <li><a href="<%=request.getContextPath()%>/ControladorJuego"><i class="fa-solid fa-gamepad"></i><span class="nav-item">Juegos</span></a></li>
-                <li><a href="vista/sugerencias.jsp"><i class="fa-regular fa-comment"></i><span class="nav-item">Sugerencias</span></a></li>
-                <li><a href="vista/libroReclamaciones.jsp"><i class="fa-solid fa-file-circle-exclamation"></i><span class="nav-item">Reportes</span></a></li>
-                <li><a href="vista/FAQ.jsp"><i class="fa-regular fa-circle-question"></i><span class="nav-item">Soporte</span></a></li>
+                <li><a href="index.jsp"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="<%=request.getContextPath()%>/ControladorJuego"><i class="fa-solid fa-gamepad"></i></a></li>
+                <li><a href="vista/sugerencias.jsp"><i class="fa-regular fa-comment"></i></a></li>
+                <li><a href="vista/libroReclamaciones.jsp"><i class="fa-solid fa-file-circle-exclamation"></i></a></li>
+                <li><a href="vista/FAQ.jsp"><i class="fa-regular fa-circle-question"></i></a></li>
             </ul>
         </div>
-                <style>
-
-        .content-wrapper {
-            flex: 1;
-            padding: 20px;
-            background-color: #f7f7f7;
-        }
-
-        .filter-container {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 250px;
-        }
-
-        .filter-label {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .filter-select {
-            font-size: 12px;
-            padding: 8px;
-            border: 1px solid #999;
-            border-radius: 4px;
-            width: 100%;
-            background-color: #fff;
-            color: #333;
-            cursor: pointer;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .filter-select:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
-            outline: none;
-        }
-
-        .filter-select:hover {
-            border-color: #777;
-        }
-
-       
-
-       
-    </style>
+                
          <div class="content-wrapper">
             <div class="filter-container">
                 <label for="categoria" class="filter-label">Filtrar por categoría:</label>
