@@ -1,32 +1,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="../vista/header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/formsugerencias.css" rel="stylesheet" type="text/css"/>
         <title>Formulario de Sugerencias</title>
-        <style>
-            body {
-                padding-top: 50px; 
-            }
-        </style>
     </head>
     <body>
         <div class="main-content">
-        <div class="sidebar">
-            <div class="top">
-                <i class="fa-solid fa-bars" id="btn"></i>
+            <div class="sidebar">
+                <ul>
+                    <li><a href="<%=request.getContextPath()%>/index.jsp"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="<%=request.getContextPath()%>/ControladorJuego"><i class="fa-solid fa-gamepad"></i></a></li>
+                    <li><a href="<%=request.getContextPath()%>/vista/sugerencias.jsp"><i class="fa-regular fa-comment"></i></a></li>
+                    <li><a href="<%=request.getContextPath()%>/vista/libroReclamaciones.jsp"><i class="fa-solid fa-file-circle-exclamation"></i></a></li>
+                    <li><a href="<%=request.getContextPath()%>/vista/FAQ.jsp"><i class="fa-regular fa-circle-question"></i></a></li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="index.jsp"><i class="fa-solid fa-house"></i><span class="nav-item">Inicio</span></a></li>
-                <li><a href="<%=request.getContextPath()%>/ControladorJuego"><i class="fa-solid fa-gamepad"></i><span class="nav-item">Juegos</span></a></li>
-                <li><a href="vista/sugerencias.jsp"><i class="fa-regular fa-comment"></i><span class="nav-item">Sugerencias</span></a></li>
-                <li><a href="vista/libroReclamaciones.jsp"><i class="fa-solid fa-file-circle-exclamation"></i><span class="nav-item">Reportes</span></a></li>
-                <li><a href="vista/FAQ.jsp"><i class="fa-regular fa-circle-question"></i><span class="nav-item">Soporte</span></a></li>
-            </ul>
         </div>
-                </div>
-        <%@ include file="../vista/header.jsp" %>
         <div class="form-container">
             <h1>Formulario de Sugerencias</h1>
             <form action="<%=request.getContextPath()%>/ControladorSugerencia" method="post">

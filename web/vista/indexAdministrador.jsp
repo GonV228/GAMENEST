@@ -82,33 +82,33 @@
                     <li>
                         <a href='../vista/indexAdministrador.jsp'>
                             <i class="fa-solid fa-house"></i>
-                            <span class='nav-item'>Inicio</span>
+                            
                         </a>
 
                     </li>
                     <li>
                         <a href="<%=request.getContextPath()%>/ControladorJuego">
                             <i class="fa-solid fa-gamepad"></i>
-                            <span class='nav-item'>Juegos</span>
+                            
                         </a>                   
 
                     </li>
                     <li>
                         <a href="<%=request.getContextPath()%>/ControladorDataTable">
                             <i class="fa-solid fa-file-circle-exclamation"></i>
-                            <span class='nav-item'>Reportes</span>
+                            
                         </a>
                     </li>
                     <li>
                       <a href="../vista/FAQ.jsp">
                             <i class="fa-regular fa-circle-question"></i>
-                            <span class='nav-item'>Soporte</span>
+                            
                         </a>                    
                     </li>
                     <li>
                         <a href="../vista/GestionarJuegos.jsp">
                             <i class="fa-solid fa-gamepad"></i>
-                            <span class='nav-item'>GestionarJuegos</span>
+                            
                         </a>
                     </li>
 
