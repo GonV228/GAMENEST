@@ -1,143 +1,175 @@
-<%@page import="modelo.dto.Usuario"%>
+<%@ page import="modelo.dao.TablaJuegosDao" %>
+<%@ page import="modelo.dto.juego" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GameNest</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
-              crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="../css/header.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/carrusel.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/gestionarjuegos.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>GameNest</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <link href="../css/gestionarjuegos.css" rel="stylesheet" type="text/css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-        <header class="main-header">
-            <i class="fa-solid fa-dragon"></i>
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar...">
-                <button type="button">
-                    <i class="fa-solid fa-search"></i>
-                </button>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('../img/fondoG.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ContenedorAgregarJuego {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ContenedorAgregarJuego h4 {
+            margin-bottom: 15px;
+        }
+
+        .ContenedorAgregarJuego label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .ContenedorAgregarJuego input,
+        .ContenedorAgregarJuego select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .ContenedorAgregarJuego button {
+            margin-top: 15px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="ContenedorAgregarJuego">
+        <h4>Agregar Nuevo Juego</h4>
+        <form action="<%=request.getContextPath()%>/ControladorCrudDataJuegos" method="post">
+            <label for="nombre">Nombre del Juego:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="imagen">URL de la Imagen:</label>
+            <input type="text" id="imagen" name="imagen" required><br>
+
+            <label for="peso">Peso del Juego:</label>
+            <input type="text" id="peso" name="peso" required><br>
+
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" name="precio" required><br>
+
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="accion">Acción</option>
+                <option value="aventura">Aventura</option>
+                <option value="estrategia">Estrategia</option>
+            </select><br>
+
+            <button type="submit" name="accion" value="agregar">Agregar Juego</button>
+        </form>
+    </div>
+    <br>
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+    <div class="container">
+        <div class="card border-primary mb-3">
+            <div class="card-header">
+                Tabla
             </div>
-            <div class="container">
-                <%
-                    Usuario usuario = (Usuario) session.getAttribute("usuario");
-                    if (usuario != null && usuario.getRol().equals("administrador")) {
-                        out.print("Hola " + usuario.getNombres() + ", bienvenido como administrador.");
-                %>
-                <a href="${pageContext.request.contextPath}/ControladorLogin?accion=cerrar"><i class="fa-solid fa-right-to-bracket cerrar"></i>Salir</a>
-                <% } else { %>
-                <a href="${pageContext.request.contextPath}/vista/login.jsp">Login<i class="fa-solid fa-user usuario"></i></a>
-                    <% }%>
+            <div class="card-body">
+                <table id="table_id" class="display table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Imagen</th>
+                            <th>Peso</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            TablaJuegosDao dao = new TablaJuegosDao();
+                            List<juego> juegos = dao.listar();
+                            for (juego j : juegos) {
+                        %>
+                        <tr>
+                            <td><%= j.getIdJuego() %></td>
+                            <td><%= j.getNombreJuego() %></td>
+                            <td><%= j.getImagenJuego() %></td>
+                            <td><%= j.getPesoJuego() %></td>
+                            <td><%= j.getPrecio() %></td>
+                            <td><%= j.getCategoria() %></td>
+                            <td>
+                                <!-- Botón para editar que redirige a editarJuego.jsp -->
+                                <form action="editarJuego.jsp" method="get" style="display:inline;">
+                                    <input type="hidden" name="id" value="<%= j.getIdJuego() %>">
+                                    <input type="hidden" name="nombre" value="<%= j.getNombreJuego() %>">
+                                    <input type="hidden" name="imagen" value="<%= j.getImagenJuego() %>">
+                                    <input type="hidden" name="peso" value="<%= j.getPesoJuego() %>">
+                                    <input type="hidden" name="precio" value="<%= j.getPrecio() %>">
+                                    <input type="hidden" name="categoria" value="<%= j.getCategoria() %>">
+                                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                                </form>
+                                <!-- Botón para eliminar -->
+                                <form action="<%=request.getContextPath()%>/ControladorCrudDataJuegos" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="<%= j.getIdJuego() %>">
+                                    <input type="hidden" name="accion" value="eliminar">
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Imagen</th>
+                            <th>Peso</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
-        </header>
-
-        <div class="carrusel-body">
-            <div class='sidebar'>   
-                <div class='top'>
-                    <i class="fa-solid fa-bars" id='btn'></i>
-                </div>     
-                <ul>
-                    <li>
-                        <a href='../vista/indexAdministrador.jsp'>
-                            <i class="fa-solid fa-house"></i>
-                            <span class='nav-item'>Inicio</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<%=request.getContextPath()%>/ControladorJuego">
-                            <i class="fa-solid fa-gamepad"></i>
-                            <span class='nav-item'>Juegos</span>
-                        </a>                   
-
-                    </li>
-                    <li>
-                        <a href='#'>
-                            <i class="fa-solid fa-file-circle-exclamation"></i>
-                            <span class='nav-item'>Reportes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../vista/FAQ.jsp">
-                            <i class="fa-regular fa-circle-question"></i>
-                            <span class='nav-item'>Soporte</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../vista/GestionarJuegos.jsp">
-                            <i class="fa-solid fa-gamepad"></i>
-                            <span class='nav-item'>GestionarJuegos</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <script>
-                let btn = document.querySelector('#btn');
-                let sidebar = document.querySelector('.sidebar');
-                btn.onclick = function () {
-                    sidebar.classList.toggle('active');
-                };
-            </script>
-
-            <div class="ContenedorAgregarJuego">
-                <h4>Agregar Nuevo Juego</h4>
-                <form action="<%=request.getContextPath()%>/ControladorGestionarJuegos" method="post">
-                    <label for="nombre">Nombre del Juego:</label>
-                    <input type="text" id="nombre" name="nombre" required><br>
-
-                    <label for="imagen">URL de la Imagen:</label>
-                    <input type="text" id="imagen" name="imagen" required><br>
-
-                    <label for="peso">Peso del Juego:</label>
-                    <input type="text" id="peso" name="peso" required><br>
-
-                    <label for="precio">Precio:</label>
-                    <input type="text" id="precio" name="precio" required><br>
-
-                    <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria" required>
-                        <option value="accion">Acción</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="estrategia">Estrategia</option>
-                        <!-- Agrega más opciones según sea necesario -->
-                    </select><br>
-
-                    <button type="submit">Agregar Juego</button>
-                </form>
-            </div>
-            <div class="ContenedorDetalle">
-                <h4>Agregar Detalle del Juego</h4>
-                <label for="juego">Juego:</label>
-                <select id="juego" name="juego" required>
-                    <!-- Aquí se incluirán las opciones de los juegos -->
-                    <option value="juego1">Juego 1</option>
-                    <option value="juego2">Juego 2</option>
-                    <option value="juego3">Juego 3</option>
-                </select>
-
-                <label for="descripcionJuego">Descripción del Juego:</label>
-                <textarea id="descripcionJuego" name="descripcionJuego" rows="4" cols="50" required></textarea><br>
-
-                <label for="fechaEstreno">Fecha de Estreno:</label>
-                <input type="date" id="fechaEstreno" name="fechaEstreno" required><br>
-
-                <label for="plataforma">Plataforma:</label>
-                <input type="text" id="plataforma" name="plataforma" required><br>
-
-                <label for="idiomaTexto">Idioma de Texto:</label>
-                <input type="text" id="idiomaTexto" name="idiomaTexto" required><br>
-
-                <label for="idiomaAudio">Idioma de Audio:</label>
-                <input type="text" id="idiomaAudio" name="idiomaAudio" required><br>
-            </div>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    </body>
+        </div>
+    </div>
+</body>
 </html>
