@@ -49,7 +49,6 @@
     </div> 
 </div>
         -->
-
         <!-- Carrusel de imagenes -->
 
         <div class="carrusel-body">
