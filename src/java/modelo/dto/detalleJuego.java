@@ -4,6 +4,7 @@ import java.util.Date;
 public class detalleJuego {
     
     private int detalleJuegoId;
+    private int idJuego;
     private String descripcionJuego;
     private Date fechaEsterno;
     private String plataforma;
@@ -11,12 +12,34 @@ public class detalleJuego {
     private String idiomaAudio;
     private String urlVideo;
 
+    public detalleJuego() {
+    }
+
+    public detalleJuego(int detalleJuegoId, int idJuego, String descripcionJuego, Date fechaEsterno, String plataforma, String idiomaTexto, String idiomaAudio, String urlVideo) {
+        this.detalleJuegoId = detalleJuegoId;
+        this.idJuego = idJuego;
+        this.descripcionJuego = descripcionJuego;
+        this.fechaEsterno = fechaEsterno;
+        this.plataforma = plataforma;
+        this.idiomaTexto = idiomaTexto;
+        this.idiomaAudio = idiomaAudio;
+        this.urlVideo = urlVideo;
+    }
+
     public int getDetalleJuegoId() {
         return detalleJuegoId;
     }
 
     public void setDetalleJuegoId(int detalleJuegoId) {
         this.detalleJuegoId = detalleJuegoId;
+    }
+
+    public int getIdJuego() {
+        return idJuego;
+    }
+
+    public void setIdJuego(int idJuego) {
+        this.idJuego = idJuego;
     }
 
     public String getDescripcionJuego() {
@@ -66,7 +89,5 @@ public class detalleJuego {
     public void setUrlVideo(String urlVideo) {
         this.urlVideo = urlVideo;
     }
-    
-    
-    
+
 }
