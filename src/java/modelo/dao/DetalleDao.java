@@ -44,7 +44,7 @@ public class DetalleDao {
     }
 
     public boolean agregar(detalleJuego d) {
-        String SQL = "INSERT INTO detallejuego (idJuego, descripcionJuego, fechaEstreno, plataforma, idiomaTexto, idiomaAudio) VALUES (?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO detallejuego (idJuego, descripcionJuego, fechaEstreno, plataforma, idiomaTexto, idiomaAudio, urlVideo) VALUES (?, ?, ?, ?, ?, ?, 'NULL')";
         try {
             con = cn.getConection();
             ps = con.prepareStatement(SQL);

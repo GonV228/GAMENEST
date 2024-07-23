@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,8 +42,8 @@
                             <td>${r.descripcion_problema}</td>
                             <td><a href="${pageContext.request.contextPath}/${r.evidencia}" data-lightbox="image-${status.index}"><img src="${pageContext.request.contextPath}/${r.evidencia}" style="width: 30px; height: 30px;"></a></td>
                             <td>
-                                <button class="btn success"><i class="fas fa-check-circle"></i></button>
-                                <button class="btn danger"><i class="fas fa-times-circle"></i></button>
+                                <button class="btn success" data-id="${r.id}"><i class="fas fa-check-circle"></i></button>
+                                <button class="btn danger" data-id="${r.id}"><i class="fas fa-times-circle"></i></button>
                             </td>
 
                         </tr>
@@ -59,23 +59,67 @@
 
 
         <script>
-            new DataTable('#reclamacionesTable', {
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/2.1.0/i18n/es-ES.json',
-                },
-                columnDefs: [
-                    {
-                        target: 4,
-                        visible: false,
-                        searchable: false
-                    },
-                    {
-                        target: 2,
-                        visible: false
-                    }
-                ]
+            $(document).ready(function () {
 
+                $('#reclamacionesTable').DataTable({
+                    language: {
+                        url: '${pageContext.request.contextPath}/js/es-ES.json',
+                    },
+                    columnDefs: [
+                        {
+                            target: 4,
+                            visible: false,
+                            searchable: false
+                        },
+                        {
+                            target: 2,
+                            visible: false
+                        }
+                    ]
+
+                });
+
+                $('.btn.success').click(function () {
+                    var row = $(this).closest('tr');
+                    var id = row.find('td').eq(0).text();
+                    var correo = row.find('td').eq(2).text();
+                    var nombre = row.find('td').eq(1).text();
+                    actualizarReclamacion(id, 'success', correo, nombre);
+                });
+
+                $('.btn.danger').click(function () {
+                    var row = $(this).closest('tr');
+                    var id = row.find('td').eq(0).text();
+                    var correo = row.find('td').eq(2).text();
+                    var nombre = row.find('td').eq(1).text();
+                    actualizarReclamacion(id, 'danger', correo, nombre);
+                });
+
+                function actualizarReclamacion(id, action, correo, nombre) {
+                    $.ajax({
+                        url: 'srvReclamaciones',
+                        type: 'POST',
+                        data: {
+                            action: action,
+                            id: id,
+                            correo: correo,
+                            nombre: nombre
+                        },
+                        success: function (response) {
+                            if (response.resultado) {
+                                alert('Acción realizada con éxito');
+                                location.reload();
+                            } else {
+                                alert('Hubo un problema al realizar la acción');
+                            }
+                        },
+                        error: function () {
+                            alert('Error en la solicitud');
+                        }
+                    });
+                }
             });
+
         </script>
     </body>
 </html>

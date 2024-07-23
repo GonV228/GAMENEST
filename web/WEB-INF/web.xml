@@ -24,6 +24,10 @@
         <servlet-name>ControladorDataTable</servlet-name>
         <servlet-class>Controlador.ControladorDataTable</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>srvReclamaciones</servlet-name>
+        <servlet-class>Controlador.srvReclamaciones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ControladorDataTable</servlet-name>
         <url-pattern>/ControladorDataTable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>srvReclamaciones</servlet-name>
+        <url-pattern>/srvReclamaciones</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -10,19 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReclamacionDAO {
+
     private final Conexion conexion;
     Connection cnx;
     PreparedStatement ps;
     ResultSet rs;
-    
+
     public ReclamacionDAO() {
         this.conexion = new Conexion();
-    }   
-        public boolean reclamaciones (reclamaciones nuevaReclamacion) {
+    }
+
+    public boolean reclamaciones(reclamaciones nuevaReclamacion) {
         boolean registrado = false;
         String query = "INSERT INTO reclamaciones (nombre, apellidos, correo, telefono, producto, monto_reclamado, descripcion_problema, evidencia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'P')";
-        try (Connection con = conexion.getConection();
-            PreparedStatement ps = con.prepareStatement(query)) {
+        try (Connection con = conexion.getConection(); PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, nuevaReclamacion.getNombre());
             ps.setString(2, nuevaReclamacion.getApellidos());
             ps.setString(3, nuevaReclamacion.getCorreo());
@@ -38,8 +39,8 @@ public class ReclamacionDAO {
         }
         return registrado;
     }
-        
-        public List listar() {
+
+    public List listar() {
         List<reclamaciones> lista = new ArrayList<>();
         String SQL = "SELECT id, nombre, apellidos, correo, telefono, producto, monto_reclamado, descripcion_problema, evidencia FROM reclamaciones where estado = 'P' ";
         try {
@@ -63,4 +64,30 @@ public class ReclamacionDAO {
         }
         return lista;
     }
+
+    public boolean actualizarEstado(int id, String nuevoEstado) {
+        String query = "UPDATE reclamaciones SET estado = ? WHERE id = ?";
+        try (Connection con = conexion.getConection(); PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, nuevoEstado);
+            ps.setInt(2, id);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean eliminarReclamacion(int id) {
+        String query = "DELETE FROM reclamaciones WHERE id = ?";
+        try (Connection con = conexion.getConection(); PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
 }
