@@ -41,9 +41,9 @@ public class juegoDAO {
 
     public juego obtenerJuego(int idJuego) {
         juego j = null;
-        String sql = "SELECT  j.idJuego, j.nombreJuego, j.imagenJuego, j.pesoJuego, j.categoria, j.precio, d.descripcionJuego, d.fechaEsterno, d.plataforma, d.idiomaTexto, d.idiomaAudio, d.urlVideo "
+        String sql = "SELECT  j.idJuego, j.nombreJuego, j.imagenJuego, j.pesoJuego, j.categoria, j.precio, d.descripcionJuego, d.fechaEstreno, d.plataforma, d.idiomaTexto, d.idiomaAudio, d.urlVideo "
                 + "FROM juego j "
-                + "INNER JOIN detalleJuego d on j.detalleJuegoId = d.detalleJuegoId "
+                + "INNER JOIN detalleJuego d on j.idJuego = d.idJuego "
                 + "WHERE j.idJuego = ?";
         try (Connection cnx = cn.getConection(); PreparedStatement ps = cnx.prepareStatement(sql)) {
             ps.setInt(1, idJuego);
@@ -58,7 +58,7 @@ public class juegoDAO {
                     j.setCategoria(rs.getString("categoria"));
                     detalleJuego detalle = new detalleJuego();
                     detalle.setDescripcionJuego(rs.getString("descripcionJuego"));
-                    detalle.setFechaEsterno(rs.getDate("fechaEsterno"));
+                    detalle.setFechaEsterno(rs.getDate("fechaEstreno"));
                     detalle.setPlataforma(rs.getString("plataforma"));
                     detalle.setIdiomaTexto(rs.getString("idiomaTexto"));
                     detalle.setIdiomaAudio(rs.getString("idiomaAudio"));

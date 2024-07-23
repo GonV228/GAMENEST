@@ -105,7 +105,7 @@ public class ControladorGuardarRec extends HttpServlet {
                     response.getWriter().println("window.location.href = 'index.jsp';");
                     response.getWriter().println("</script>");
                 } else {
-                    // Si hubo un error en el registro, mostrar mensaje de error
+                    // Si hubo un error en el registro, mostrar un mensaje de error
                     response.getWriter().println("<div class='error'>Error al registrar la reclamación. Intente nuevamente más tarde</div>");
                 }
 
