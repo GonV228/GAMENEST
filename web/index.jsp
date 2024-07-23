@@ -56,21 +56,21 @@
             <!---------------------------------------- BARRA LATERAL ---------------------------------------->                  
             <div class="sidebar">
             <ul>
-                <li><a href="index.jsp"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="<%=request.getContextPath()%>/vista/index.jsp"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="<%=request.getContextPath()%>/ControladorJuego"><i class="fa-solid fa-gamepad"></i></a></li>
-                <li><a href="vista/sugerencias.jsp"><i class="fa-regular fa-comment"></i></a></li>
-                <li><a href="vista/libroReclamaciones.jsp"><i class="fa-solid fa-file-circle-exclamation"></i></a></li>
-                <li><a href="vista/FAQ.jsp"><i class="fa-regular fa-circle-question"></i></a></li>
+                <li><a href="<%=request.getContextPath()%>/vista/sugerencias.jsp"><i class="fa-regular fa-comment"></i></a></li>
+                <li><a href="<%=request.getContextPath()%>/vista/libroReclamaciones.jsp"><i class="fa-solid fa-file-circle-exclamation"></i></a></li>
+                <li><a href="<%=request.getContextPath()%>/vista/card.jsp"><i class="fa-regular fa-circle-question"></i></a></li>
             </ul>
         </div>         
             <script><!-- NO CAMBIAR -->
-                let btn = document.querySelector('#btn');
-        let sidebar = document.querySelector('.sidebar');
+                        let btn = document.querySelector('#btn');
+                let sidebar = document.querySelector('.sidebar');
 
-                btn.onclick = function () {
-                    sidebar.classList.toggle('active');
-                };
-                </script>
+                        btn.onclick = function () {
+                            sidebar.classList.toggle('active');
+                        };
+            </script>
                 <!------------------------------------------------------------------------------------------------->   
                 <div class="carrusel">
                     <h4>Ultimas Publicaciones</h4>

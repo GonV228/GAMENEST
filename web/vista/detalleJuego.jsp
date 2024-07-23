@@ -1,4 +1,7 @@
+<%@ include file="../vista/header.jsp" %>
+
 <%@page import="modelo.dto.juego" %>
+
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
         <!DOCTYPE html>
         <html>
@@ -9,6 +12,8 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+            
         </head>
         <style>
             /* Estilos generales */
@@ -203,7 +208,7 @@
                                 </h4>
                             </div>
                             <div class="actions">
-                                <button class="btn buy">Comprar</button>
+                                <button class="btn buy" onclick="addCarrito('<%= j.getIdJuego() %>', '<%= j.getNombreJuego() %>', <%= j.getPrecio() %>)">Comprar</button>
                                 <!-- Botón removido para abrir el trailer en una nueva ventana -->
                                 <button class="btn watch" onclick="toggleTrailer()">Ver Trailer</button>
                             </div>

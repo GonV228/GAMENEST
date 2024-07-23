@@ -18,7 +18,7 @@
     <body>
     <!---------------------------------------- BARRA SUPERIOR ---------------------------------------->    
     <header class="main-header">
-        <a href="../index.jsp">
+        <a href="<%=request.getContextPath()%>/index.jsp">
             <i class="fa-solid fa-dragon icon-white"></i>
         </a>
         <div class="search-bar">
@@ -99,8 +99,8 @@
                 $('#cart-items').append(
                         '<div class="d-flex justify-content-between mt-3">' +
                         '<h4 class="text-right">Total a pagar: $' + total + '</h4>' +
-                        '<button type="button" onclick="validarSesion()" class="btn btn-primary">Pagar</button>' +
-                        '</div>'
+                         '<button type="button" onclick="redirectToCard()" class="btn btn-primary">Pagar</button>' +
+                '</div>'
                         );
             }
             $('#cuenta-carrito').text(cart.length);
@@ -124,6 +124,9 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             showCart(); // Actualizar la visualización del carrito
         }
+         function redirectToCard() {
+        window.location.href = "<%=request.getContextPath()%>/vista/card.jsp";
+    }
     </script>
     </body>
 </html>
