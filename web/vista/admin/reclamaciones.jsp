@@ -12,6 +12,22 @@
         <title>Reclamaciones</title>
     </head>
     <body>
+
+        <button class="btn btn-success mx-3 mt-3" data-bs-toggle="offcanvas" data-bs-target="#intro">Administrar</button>
+        <div class="offcanvas offcanvas-start" id="intro">
+            <div class="offcanvas-header">
+                <div class="offcanvas-title">
+                    <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+                </div>
+            </div>
+
+            <div class="offcanvas-body">
+                <p><a href="${pageContext.request.contextPath}/vista/indexAdministrador.jsp"><i class="fa-solid fa-house"></i> Inicio</a></p>
+                <p><a href="<%=request.getContextPath()%>/ControladorDataTable"> Reclamaciones Pendientes</a></p>
+                <p>sa</p>
+            </div>
+        </div>
+            
         <div class="listaReclamaciones">
             <table id="reclamacionesTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
