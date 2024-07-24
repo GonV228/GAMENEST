@@ -20,7 +20,7 @@ import modelo.dto.juego;
 @WebServlet(name = "ControladorCrudDataJuegos", urlPatterns = {"/ControladorCrudDataJuegos"})
 public class ControladorCrudDataJuegos extends HttpServlet {
 
-    private String pathFiles = "C:\\xampp\\htdocs\\GAMENEST\\web\\games\\";
+    private String pathFiles = "H:\\xamp\\htdocs\\GAMENEST\\web\\games\\";
     private File uploads = new File(pathFiles);
     private String[] extens = {".ico", ".png", ".jpg", ".jpeg"};
 
