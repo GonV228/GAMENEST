@@ -44,7 +44,7 @@
                         <div>
                             <a href="${pageContext.request.contextPath}/ControladorJuego?accion=detalle&idJuego=${j.idJuego}">
                                 <picture>
-                                    <img src="juegos/${j.imagenJuego}" alt="${j.nombreJuego}"/>
+                                    <img src="${pageContext.request.contextPath}/${j.imagenJuego}" alt="${j.nombreJuego}"/>
                                 </picture>
                             </a>
                             <div class="name-game">

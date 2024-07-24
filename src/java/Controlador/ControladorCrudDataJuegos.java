@@ -1,16 +1,28 @@
 package Controlador;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.dao.TablaJuegosDao;
 import modelo.dto.juego;
 
+@MultipartConfig
 @WebServlet(name = "ControladorCrudDataJuegos", urlPatterns = {"/ControladorCrudDataJuegos"})
 public class ControladorCrudDataJuegos extends HttpServlet {
+
+    private String pathFiles = "C:\\xampp\\htdocs\\GAMENEST\\web\\games\\";
+    private File uploads = new File(pathFiles);
+    private String[] extens = {".ico", ".png", ".jpg", ".jpeg"};
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,27 +49,34 @@ public class ControladorCrudDataJuegos extends HttpServlet {
 
     private void agregarJuego(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nombre = request.getParameter("nombre");
-        String imagen = request.getParameter("imagen");
-        String peso = request.getParameter("peso");
-        String precio = request.getParameter("precio");
-        String categoria = request.getParameter("categoria");
 
-        if (nombre != null && imagen != null && peso != null && precio != null && categoria != null) {
-            juego nuevoJuego = new juego();
-            nuevoJuego.setNombreJuego(nombre);
-            nuevoJuego.setImagenJuego(imagen);
-            nuevoJuego.setPesoJuego(peso);
-            nuevoJuego.setPrecio(Double.parseDouble(precio));
-            nuevoJuego.setCategoria(categoria);
+        try {
+            String nombre = request.getParameter("nombre");
+            Part part = request.getPart("imagen");
+            String peso = request.getParameter("peso");
+            String precio = request.getParameter("precio");
+            String categoria = request.getParameter("categoria");
 
-            TablaJuegosDao dao = new TablaJuegosDao();
-            dao.agregar(nuevoJuego);
+            if (part == null) {
+                System.out.println("No ha seleccionado un archivo");
+                return;
+            }
 
-            response.sendRedirect("vista/GestionarJuegos.jsp");
-        } else {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Faltan datos para agregar el juego.");
+            if (isExtension(part.getSubmittedFileName(), extens)) {
+                String photo = saveFile(part, uploads);
+                juego nuevoJuego = new juego();
+                nuevoJuego.setNombreJuego(nombre);
+                nuevoJuego.setImagenJuego(photo);
+                nuevoJuego.setPesoJuego(peso);
+                nuevoJuego.setPrecio(Double.parseDouble(precio));
+                nuevoJuego.setCategoria(categoria);
+                TablaJuegosDao dao = new TablaJuegosDao();
+                dao.agregar(nuevoJuego);
+            }
+        } catch (Exception e) {
         }
+        
+        response.sendRedirect("vista/GestionarJuegos.jsp");
     }
 
     private void editarJuego(HttpServletRequest request, HttpServletResponse response)
@@ -113,6 +132,35 @@ public class ControladorCrudDataJuegos extends HttpServlet {
         }
     }
 
+    private String saveFile(Part part, File pathUploads) {
+        String pathAbsolute = "";
+
+        try {
+            Path path = Paths.get(part.getSubmittedFileName());
+            String filename = path.getFileName().toString();
+            InputStream input = part.getInputStream();
+
+            if (input != null) {
+                File file = new File(pathUploads, filename);
+                pathAbsolute = "games/" + filename;
+                Files.copy(input, file.toPath());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pathAbsolute;
+    }
+
+    private boolean isExtension(String filename, String[] extensions) {
+        for (String et : extensions) {
+            if (filename.toLowerCase().endsWith(et)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void listarJuegos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TablaJuegosDao dao = new TablaJuegosDao();
@@ -136,4 +184,5 @@ public class ControladorCrudDataJuegos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+
 }

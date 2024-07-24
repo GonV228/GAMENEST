@@ -61,7 +61,7 @@
                         <tr>
                             <td><%= j.getIdJuego()%></td>
                             <td><%= j.getNombreJuego()%></td>
-                            <td><%= j.getImagenJuego()%></td>
+                            <td><a href="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>"><img src="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>" alt="Imagen del juego" style="width: 100px; height: auto;"/></a></td>
                             <td><%= j.getPesoJuego()%></td>
                             <td><%= j.getPrecio()%></td>
                             <td><%= j.getCategoria()%></td>
@@ -100,12 +100,12 @@
                     <div class="modal-body">
                         <div class="ContenedorAgregarJuego">
                             <h4>Agregar Nuevo Juego</h4>
-                            <form action="<%=request.getContextPath()%>/ControladorCrudDataJuegos" method="post">
+                            <form action="<%=request.getContextPath()%>/ControladorCrudDataJuegos" method="post" enctype="multipart/form-data">
                                 <label for="nombre">Nombre del Juego:</label>
                                 <input type="text" id="nombre" name="nombre" required><br>
 
-                                <label for="imagen">URL de la Imagen:</label>
-                                <input type="text" id="imagen" name="imagen" required><br>
+                                <label for="imagen">Imagen:</label>
+                                <input type="file" id="imagen" name="imagen" required><br>
 
                                 <label for="peso">Peso del Juego:</label>
                                 <input type="text" id="peso" name="peso" required><br>
