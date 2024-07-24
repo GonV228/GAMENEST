@@ -28,13 +28,13 @@ public class srvReclamaciones extends HttpServlet {
         if ("success".equals(action)) {
             resultado = reclamacionDAO.actualizarEstado(id, "A");
             if (resultado) {
-                // Llama al método para enviar el correo de aprobación
+                // correo de aprobación
                 correo.enviarCorreoAprobacion(correoUsuario, nombreUsuario);
             }
         } else if ("danger".equals(action)) {
             resultado = reclamacionDAO.eliminarReclamacion(id);
             if (resultado) {
-                // Llama al método para enviar el correo de eliminación
+                // correo de eliminación
                 correo.enviarCorreoRechazo(correoUsuario, nombreUsuario);
             }
         }

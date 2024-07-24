@@ -11,94 +11,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GameNest</title>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
         <link href="../css/gestionarjuegos.css" rel="stylesheet" type="text/css"/>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Poppins", sans-serif;
-            }
 
-            body {
-                min-height: 100vh;
-                background-image: url('../img/fondoG.jpg');
-                background-size: cover;
-                background-position: center;
-            }
-
-            .container-row {
-                display: flex;
-                justify-content: space-around;
-                margin-bottom: 20px;
-            }
-
-            .ContenedorAgregarJuego, .container {
-                background-color: rgba(255, 255, 255, 0.9);
-                padding: 20px;
-                border-radius: 10px;
-                width: 45%;
-            }
-
-            .ContenedorAgregarJuego h4, .container h4 {
-                margin-bottom: 15px;
-            }
-
-            .ContenedorAgregarJuego label, .container label {
-                display: block;
-                margin-top: 10px;
-            }
-
-            .ContenedorAgregarJuego input, .ContenedorAgregarJuego select,
-            .container input, .container select {
-                width: 100%;
-                padding: 8px;
-                margin-top: 5px;
-            }
-
-            .ContenedorAgregarJuego button, .container button {
-                margin-top: 15px;
-            }
-
-            .table thead th {
-                background-color: #007bff;
-                color: white;
-            }
-        </style>
     </head>
     <body>
-        <div class="container-row">
-            <div class="ContenedorAgregarJuego">
-                <h4>Agregar Nuevo Juego</h4>
-                <form action="<%=request.getContextPath()%>/ControladorCrudDataJuegos" method="post">
-                    <label for="nombre">Nombre del Juego:</label>
-                    <input type="text" id="nombre" name="nombre" required><br>
 
-                    <label for="imagen">URL de la Imagen:</label>
-                    <input type="text" id="imagen" name="imagen" required><br>
-
-                    <label for="peso">Peso del Juego:</label>
-                    <input type="text" id="peso" name="peso" required><br>
-
-                    <label for="precio">Precio:</label>
-                    <input type="text" id="precio" name="precio" required><br>
-
-                    <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria" required>
-                        <option value="accion">Acción</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="estrategia">Estrategia</option>
-                    </select><br>
-
-                    <button type="submit" name="accion" value="agregar">Agregar Juego</button>
-                </form>
+        <button class="btn btn-success mx-3 mt-3" data-bs-toggle="offcanvas" data-bs-target="#intro">Administrar</button>
+        <div class="offcanvas offcanvas-start" id="intro">
+            <div class="offcanvas-header">
+                <div class="offcanvas-title">
+                    <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+                </div>
             </div>
+
+            <div class="offcanvas-body">
+                <p><a href="${pageContext.request.contextPath}/vista/indexAdministrador.jsp"><i class="fa-solid fa-house"></i> Inicio</a></p>
+                <p><a href="<%=request.getContextPath()%>/ControladorDataTable"> Reclamaciones Pendientes</a></p>
+                <p><a href="<%=request.getContextPath()%>/vista/GestionarJuegos.jsp"> Agregar Juegos</a></p>
+            </div>
+        </div>
+        <div class="container-row">
 
             <div class="container">
                 <h4>Tabla de Juegos</h4>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddJuego">
+                    Agregar juego +
+                </button>
                 <table id="table_id" class="display table table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -145,54 +86,54 @@
                             }
                         %>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Imagen</th>
-                            <th>Peso</th>
-                            <th>Precio</th>
-                            <th>Categoría</th>
-                            <th>Operaciones</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
 
-        <div class="container-row">
-            <div class="ContenedorAgregarJuego">
-                <h4>Agregar Detalle del Juego</h4>
-                <form action="<%=request.getContextPath()%>/CCrudDetalleJuegos" method="post">
-                    <input type="hidden" name="accion" value="agregar">
+        <div class="modal fade" id="AddJuego" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ContenedorAgregarJuego">
+                            <h4>Agregar Nuevo Juego</h4>
+                            <form action="<%=request.getContextPath()%>/ControladorCrudDataJuegos" method="post">
+                                <label for="nombre">Nombre del Juego:</label>
+                                <input type="text" id="nombre" name="nombre" required><br>
 
-                    <label for="idJuego">ID del Juego:</label>
-                    <input type="text" id="idJuego" name="idJuego" required>
+                                <label for="imagen">URL de la Imagen:</label>
+                                <input type="text" id="imagen" name="imagen" required><br>
 
-                    <label for="descripcion">Descripción:</label>
-                    <input type="text" id="descripcion" name="descripcion" required>
+                                <label for="peso">Peso del Juego:</label>
+                                <input type="text" id="peso" name="peso" required><br>
 
-                    <label for="fechaEstreno">Fecha de Estreno:</label>
-                    <input type="date" id="fechaEstreno" name="fechaEstreno" required>
+                                <label for="precio">Precio:</label>
+                                <input type="text" id="precio" name="precio" required><br>
 
-                    <label for="plataforma">Plataforma:</label>
-                    <input type="text" id="plataforma" name="plataforma" required>
+                                <label for="categoria">Categoría:</label>
+                                <select id="categoria" name="categoria" required>
+                                    <option value="accion">Acción</option>
+                                    <option value="aventura">Aventura</option>
+                                    <option value="estrategia">Estrategia</option>
+                                </select><br>
 
-                    <label for="idiomaTexto">Idioma del Texto:</label>
-                    <input type="text" id="idiomaTexto" name="idiomaTexto" required>
-
-                    <label for="idiomaAudio">Idioma del Audio:</label>
-                    <input type="text" id="idiomaAudio" name="idiomaAudio" required>
-
-                    <button type="submit">Agregar Detalle</button>
-                </form>
-
-
-
+                                <button type="submit" name="accion" value="agregar">Agregar Juego</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
+        <div class="container-row">
             <div class="container">
                 <h4>Tabla Detalles del Juego</h4>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddDetalle">
+                    Agregar Detalles +
+                </button>
                 <table id="table_detalle_id" class="display table table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -243,19 +184,46 @@
                             }
                         %>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Detalle ID</th>
-                            <th>ID Juego</th>
-                            <th>Descripción</th>
-                            <th>Fecha de Estreno</th>
-                            <th>Plataforma</th>
-                            <th>Idioma Texto</th>
-                            <th>Idioma Audio</th>
-                            <th>Operaciones</th>
-                        </tr>
-                    </tfoot>
                 </table>
+            </div>
+        </div>
+
+        <div class="modal fade" id="AddDetalle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ContenedorAgregarJuego">
+                            <h4>Agregar Detalle del Juego</h4>
+                            <form action="<%=request.getContextPath()%>/CCrudDetalleJuegos" method="post">
+                                <input type="hidden" name="accion" value="agregar">
+
+                                <label for="idJuego">ID del Juego:</label>
+                                <input type="text" id="idJuego" name="idJuego" required>
+
+                                <label for="descripcion">Descripción:</label>
+                                <input type="text" id="descripcion" name="descripcion" required>
+
+                                <label for="fechaEstreno">Fecha de Estreno:</label>
+                                <input type="date" id="fechaEstreno" name="fechaEstreno" required>
+
+                                <label for="plataforma">Plataforma:</label>
+                                <input type="text" id="plataforma" name="plataforma" required>
+
+                                <label for="idiomaTexto">Idioma del Texto:</label>
+                                <input type="text" id="idiomaTexto" name="idiomaTexto" required>
+
+                                <label for="idiomaAudio">Idioma del Audio:</label>
+                                <input type="text" id="idiomaAudio" name="idiomaAudio" required>
+
+                                <button type="submit">Agregar Detalle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -265,5 +233,6 @@
                 $('#table_detalle_id').DataTable();
             });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

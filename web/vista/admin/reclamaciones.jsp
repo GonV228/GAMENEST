@@ -11,6 +11,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Reclamaciones</title>
     </head>
+    <style>
+        /*body{
+            background-image: url(${pageContext.request.contextPath}/img/fondoG11.jpg);
+            background-size: cover;
+            background-position: center;
+        }*/
+
+    </style>
     <body>
 
         <button class="btn btn-success mx-3 mt-3" data-bs-toggle="offcanvas" data-bs-target="#intro">Administrar</button>
@@ -24,10 +32,10 @@
             <div class="offcanvas-body">
                 <p><a href="${pageContext.request.contextPath}/vista/indexAdministrador.jsp"><i class="fa-solid fa-house"></i> Inicio</a></p>
                 <p><a href="<%=request.getContextPath()%>/ControladorDataTable"> Reclamaciones Pendientes</a></p>
-                <p>sa</p>
+                <p><a href="<%=request.getContextPath()%>/vista/GestionarJuegos.jsp"> Agregar Juegos</a></p>
             </div>
         </div>
-            
+
         <div class="listaReclamaciones">
             <table id="reclamacionesTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
