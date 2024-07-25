@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GameNest</title>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <link href="${pageContext.request.contextPath}/css/lightbox/lightbox.css" rel="stylesheet" type="text/css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
@@ -56,12 +57,14 @@
                         <%
                             TablaJuegosDao juegosDao = new TablaJuegosDao();
                             List<juego> juegos = juegosDao.listar();
+                            int i = 1;
                             for (juego j : juegos) {
+                            i = i + 1;
                         %>
                         <tr>
                             <td><%= j.getIdJuego()%></td>
                             <td><%= j.getNombreJuego()%></td>
-                            <td><a href="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>"><img src="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>" alt="Imagen del juego" style="width: 100px; height: auto;"/></a></td>
+                            <td><a href="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>" data-lightbox="image-<%= i %>"><img src="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>" alt="Imagen del juego" style="width: 100px; height: auto;"/></a></td>
                             <td><%= j.getPesoJuego()%></td>
                             <td><%= j.getPrecio()%></td>
                             <td><%= j.getCategoria()%></td>
@@ -83,6 +86,7 @@
                             </td>
                         </tr>
                         <%
+                            i++;
                             }
                         %>
                     </tbody>
@@ -242,5 +246,6 @@
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="${pageContext.request.contextPath}/js/lightbox/lightbox.js"></script>
     </body>
 </html>
