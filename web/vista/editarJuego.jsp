@@ -56,6 +56,14 @@
                     <option value="accion" <%= "accion".equals(request.getParameter("categoria")) ? "selected" : "" %>>Acción</option>
                     <option value="aventura" <%= "aventura".equals(request.getParameter("categoria")) ? "selected" : "" %>>Aventura</option>
                     <option value="estrategia" <%= "estrategia".equals(request.getParameter("categoria")) ? "selected" : "" %>>Estrategia</option>
+                    <option value="Mundo Abierto" <%= "Mundo Abierto".equals(request.getParameter("categoria")) ? "selected" : "" %>>Mundo Abierto</option>
+                    <option value="Lucha" <%= "Lucha".equals(request.getParameter("categoria")) ? "selected" : "" %>>Lucha</option>
+                    <option value="Simulacion" <%= "Simulacion".equals(request.getParameter("categoria")) ? "selected" : "" %>>Simulacion</option>
+                    <option value="Puzles" <%= "Puzles".equals(request.getParameter("categoria")) ? "selected" : "" %>>Puzles</option>
+                    <option value="Terror" <%= "Terror".equals(request.getParameter("categoria")) ? "selected" : "" %>>Terror</option>
+                    <option value="Estrategia" <%= "Estrategia".equals(request.getParameter("categoria")) ? "selected" : "" %>>Estrategia</option>
+                    <option value="Carreras" <%= "Carreras".equals(request.getParameter("categoria")) ? "selected" : "" %>>Carreras</option>
+                    <option value="Deporte" <%= "Deporte".equals(request.getParameter("categoria")) ? "selected" : "" %>>Deporte</option>
                 </select>
             </div>
 

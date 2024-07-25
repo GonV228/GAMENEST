@@ -195,7 +195,7 @@
                         <div class="content">
                             <div class="picture">
                                 <picture>
-                                    <img src="juegos/<%= j.getImagenJuego()%>" alt="${j.nombreJuego}" />
+                                    <img src="${pageContext.request.contextPath}/<%= j.getImagenJuego()%>" alt="${j.nombreJuego}" />
                                 </picture>
                             </div>
 

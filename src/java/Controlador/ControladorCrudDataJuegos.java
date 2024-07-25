@@ -19,13 +19,16 @@ import modelo.dto.juego;
 @MultipartConfig
 @WebServlet(name = "ControladorCrudDataJuegos", urlPatterns = {"/ControladorCrudDataJuegos"})
 public class ControladorCrudDataJuegos extends HttpServlet {
+    
 
-    private String pathFiles = "H:\\xamp\\htdocs\\GAMENEST\\web\\games\\";
+    private String pathFiles = "C:\\xampp\\htdocs\\GAMENEST\\web\\games\\";
     private File uploads = new File(pathFiles);
     private String[] extens = {".ico", ".png", ".jpg", ".jpeg"};
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
         if (accion != null) {
             switch (accion) {

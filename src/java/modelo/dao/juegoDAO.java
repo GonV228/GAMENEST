@@ -71,11 +71,11 @@ public class juegoDAO {
         }
         return j;
     }
+
     public List<juego> getJuegosByCategory(String categoria) {
         List<juego> lista = new ArrayList<>();
         String SQL = "SELECT idJuego, imagenJuego, nombreJuego, pesoJuego, categoria FROM juego WHERE categoria = ? ORDER BY nombreJuego ASC";
-        try (Connection cnx = cn.getConection();
-             PreparedStatement ps = cnx.prepareStatement(SQL)) {
+        try (Connection cnx = cn.getConection(); PreparedStatement ps = cnx.prepareStatement(SQL)) {
             ps.setString(1, categoria);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -93,6 +93,45 @@ public class juegoDAO {
             e.printStackTrace();
         }
         return lista;
+    }
+
+    public List<juego> getAllJuegos(int limit, int offset) {
+        List<juego> juegos = new ArrayList<>();
+        String sql = "SELECT idJuego, imagenJuego, nombreJuego, pesoJuego, categoria FROM juego LIMIT ? OFFSET ?";
+
+        try (Connection cnx = cn.getConection(); PreparedStatement ps = cnx.prepareStatement(sql);) {
+
+            ps.setInt(1, limit);
+            ps.setInt(2, offset);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                juego j = new juego();
+                j.setIdJuego(rs.getInt("idJuego"));
+                j.setImagenJuego(rs.getString("imagenJuego"));
+                j.setNombreJuego(rs.getString("nombreJuego"));
+                j.setPesoJuego(rs.getString("pesoJuego"));
+                j.setCategoria(rs.getString("categoria"));
+                juegos.add(j);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return juegos;
+    }
+
+    public int getTotalJuegos() {
+        String sql = "SELECT COUNT(*) FROM juego";
+        try (Connection cnx = cn.getConection(); PreparedStatement ps = cnx.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     // Método para obtener la conexión a la base de datos

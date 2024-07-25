@@ -118,6 +118,14 @@
                                     <option value="accion">Acción</option>
                                     <option value="aventura">Aventura</option>
                                     <option value="estrategia">Estrategia</option>
+                                    <option value="Mundo Abierto">Mundo Abierto</option>
+                                    <option value="Lucha">Lucha</option>
+                                    <option value="Simulacion">Simulacion</option>
+                                    <option value="Puzles">Puzles</option>
+                                    <option value="Terror">Terror</option>
+                                    <option value="Estrategia">Estrategia</option>
+                                    <option value="Carreras">Carreras</option>
+                                    <option value="Deporte">Deporte</option>
                                 </select><br>
 
                                 <button type="submit" name="accion" value="agregar">Agregar Juego</button>
