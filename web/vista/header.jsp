@@ -125,6 +125,7 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             showCart(); // Actualizar la visualización del carrito
         }
+        
          function redirectToCard() {
         window.location.href = "<%=request.getContextPath()%>/vista/card.jsp";
     }

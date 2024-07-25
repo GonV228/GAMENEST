@@ -26,7 +26,7 @@
         }
     </style>
 <body>
-    <form action="<%=request.getContextPath()%>/ControladorProcesarCompra" method="post" accept-charset="UTF-8">
+    <form action="<%=request.getContextPath()%>/ControladorProcesarCompra" method="post" accept-charset="UTF-8" onsubmit="clearCart()">
     <div class="container">
         <div class="left">
             <p>Métodos de Pago</p>
@@ -81,7 +81,7 @@
                 </div>
                 
                 <input type="hidden" name="total" id="total" value="0">
-                <button type="submit" id="payButton">Pagar</button>
+                <button type="submit"  id="payButton">Pagar</button>
             </div>
         </div>
         <div class="right">
@@ -118,6 +118,9 @@
             totalPrice.innerHTML = 'Total a pagar: $' + total;
         }
         document.getElementById('total').value = total;
+    }
+    function clearCart() {
+        localStorage.setItem('cart', JSON.stringify([])); // Vacia el carrito en localStorage
     }
 </script>
     <script src="../js/card.js" type="text/javascript"></script>
