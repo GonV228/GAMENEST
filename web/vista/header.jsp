@@ -72,6 +72,7 @@
                 cart.push(product);
             }
             localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = "<%= request.getContextPath() %>/ControladorJuego";
             showCart();
         }
 

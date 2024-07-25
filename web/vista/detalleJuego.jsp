@@ -200,15 +200,13 @@
                             </div>
 
                             <div>
-                                <h1>
-                                    <%= j.getNombreJuego()%>
-                                </h1>
+                                
                                 <h4>
                                     <%= j.getCategoria()%>
                                 </h4>
                             </div>
                             <div class="actions">
-                                <button class="btn buy" onclick="addCarrito('<%= j.getIdJuego() %>', '<%= j.getNombreJuego() %>', <%= j.getPrecio() %>)">Comprar</button>
+                                <button class="btn buy" onclick="addCarrito('<%= j.getIdJuego() %>', '<%= j.getNombreJuego() %>', <%= j.getPrecio() %>)">Agregar al Carrito</button>
                                 <!-- Botón removido para abrir el trailer en una nueva ventana -->
                                 <button class="btn watch" onclick="toggleTrailer()">Ver Trailer</button>
                             </div>
@@ -218,6 +216,9 @@
                         <div class="content-wrapper">
 
                             <div class="detalleJuego">
+                                <h1>
+                                    <%= j.getNombreJuego()%>
+                                </h1>
                                 <p>Peso: <%= j.getPesoJuego()%>
                                 </p>
                                 <p>Precio: <%= j.getPrecio()%>

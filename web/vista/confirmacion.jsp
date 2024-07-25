@@ -57,6 +57,7 @@
             <div id="order-details"></div>
             <p><strong>Monto Total:</strong> <span class="precio-total">$<span id="total-price"></span></span></p>
             <button id="download-pdf" type="button">Descargar PDF</button>
+            <button id="end-buy"  onclick="payAndClearCart()" type="button">Finalizar compra</button>
         </div>
     </div>
         
@@ -114,6 +115,19 @@
             // Descargar el PDF
             doc.save('GAMENEST_boleta_compra.pdf');
         }
+        function clearCart() {
+        localStorage.setItem('cart', JSON.stringify([])); // Vacia el carrito en localStorage
+        showCart(); // Actualiza la visualización del carrito
+    }
+
+    // Función para pagar y vaciar el carrito
+    function payAndClearCart() {
+        clearCart(); // Vacia el carrito
+        redirectToCard(); // Redirige a la página de pago
+    }
+    function redirectToCard() {
+        window.location.href = "<%=request.getContextPath()%>/ControladorJuego";
+    }
     </script>
 </body>
 </html>
